@@ -1,0 +1,41 @@
+{
+  "name": "aic-cms-portal",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "next dev -p 9292",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "eslint src/**/*.ts{,x} --fix",
+    "format": "prettier --write ./src/**/*.{ts,tsx,css}"
+  },
+  "dependencies": {
+    "@sanity/vision": "^3.16.7",
+    "cookies-next": "^4.0.0",
+    "jwt-decode": "^3.1.2",
+    "next": "latest",
+    "next-sanity": "^5.5.4",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-icons": "^4.11.0",
+    "sanity": "^3.16.7",
+    "styled-components": "^6.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "postcss": "latest",
+    "prettier": "^3.0.3",
+    "tailwindcss": "latest",
+    "typescript": "latest"
+  }
+}

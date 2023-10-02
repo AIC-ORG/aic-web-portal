@@ -1,0 +1,24 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "rules": {
+    "import/no-anonymous-default-export": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "singleQuote": true,
+        "trailingComma": "all",
+        "tabWidth": 2,
+        "semi": true,
+        "printWidth": 100,
+        "bracketSpacing": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files":["src/**/*.ts", "src/**/*.tsx"],
+      "excludedFiles": ["*.js", "*.jsx", "*.json", "*.config.js"]
+    }
+  ]
+}
