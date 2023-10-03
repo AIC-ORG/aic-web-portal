@@ -6,10 +6,12 @@ import { Inter, Luckiest_Guy } from 'next/font/google';
 export const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '900', '700', '800', '300'],
+  variable: '--font-inter',
 });
 export const luckGuy = Luckiest_Guy({
   weight: '400',
   subsets: ['latin'],
+  variable: '--font-luckiest-guy',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${inter.variable} ${luckGuy.variable}`}>
         {children}
         {/* {modal} */}
       </body>

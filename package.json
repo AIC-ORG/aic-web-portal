@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@sanity/vision": "^3.16.7",
+    "axios": "^1.5.1",
     "cookies-next": "^4.0.0",
     "jwt-decode": "^3.1.2",
     "next": "latest",
