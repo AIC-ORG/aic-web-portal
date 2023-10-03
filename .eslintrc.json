@@ -3,7 +3,7 @@
   "rules": {
     "import/no-anonymous-default-export": "off",
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "endOfLine": "auto",
         "singleQuote": true,
@@ -17,7 +17,7 @@
   },
   "overrides": [
     {
-      "files":["src/**/*.ts", "src/**/*.tsx"],
+      "files": ["src/**/*.ts", "src/**/*.tsx"],
       "excludedFiles": ["*.js", "*.jsx", "*.json", "*.config.js"]
     }
   ]

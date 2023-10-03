@@ -12,6 +12,6 @@
     "extensions": [".js", ".jsx", ".ts", ".tsx"]
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

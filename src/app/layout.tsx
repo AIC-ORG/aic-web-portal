@@ -1,8 +1,16 @@
+import NavBar from '@/components/shared/NavBar';
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Luckiest_Guy } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+export const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '900', '700', '800', '300'],
+});
+export const luckGuy = Luckiest_Guy({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: 'Ariel Wayz - Admin Portal',

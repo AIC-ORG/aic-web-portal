@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint src/**/*.ts{,x} --fix",
-    "format": "prettier --write ./src/**/*.{ts,tsx,css}"
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write ./src"
   },
   "dependencies": {
     "@sanity/vision": "^3.16.7",
