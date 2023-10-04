@@ -5,6 +5,7 @@ import { setCookie } from 'cookies-next';
 import Image from 'next/image';
 import React from 'react';
 import { FaSpinner } from 'react-icons/fa';
+import { useSearchParams } from 'next/navigation';
 
 const LoginPage = () => {
   const [data, setData] = React.useState({
@@ -17,6 +18,7 @@ const LoginPage = () => {
   });
   const [loading, setLoading] = React.useState(false);
   const [loginError, setLoginError] = React.useState('');
+  const queryParams = useSearchParams();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -34,14 +36,16 @@ const LoginPage = () => {
     setLoginError('');
     try {
       const res = await api.post('/auth/login', data);
-      if (res.status === 200) {
+      if (res.status === 200 || res.status === 201) {
         const token = res.data.token ?? res.data.data.token ?? res.data.data.accessToken;
         setCookie('token', token, {
           maxAge: 60 * 60 * 24,
           path: '/',
         });
+        const user = res.data?.data?.user;
+        const redirectUrl = user?.role === 'ARTIST' ? '/portal' : '/';
+        window.location.href = redirectUrl;
       }
-      window.location.href = '/';
     } catch (error: any) {
       console.log(error?.response?.data?.error ?? error);
       setLoginError(error?.response?.data?.error ?? 'Something went wrong.');
@@ -103,7 +107,9 @@ const LoginPage = () => {
             type="submit"
             className="bg-black border-2 border-white hover:border-black truncate stylbtn text-white rounded-[3em] py-3 px-8"
           >
-            <p className="z-50 relative">{loading ? <FaSpinner /> : 'Login'}</p>
+            <p className="z-50 relative">
+              {loading ? <FaSpinner className=" animate-spin" /> : 'Login'}
+            </p>
           </button>
         </form>
       </div>
