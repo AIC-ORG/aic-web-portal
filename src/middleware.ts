@@ -7,9 +7,13 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get('token');
   let whitelist = ['/login', '/register', '/api/login', '/api/register', '/redirect'];
 
-  if (whitelist.includes(request.nextUrl.pathname) && !token) return NextResponse.next();
+  // ignore the whitelist if the request is for the portal
+  const isPortalUrl = request.nextUrl.pathname.startsWith('/portal');
+  if ((whitelist.includes(request.nextUrl.pathname) && !token) || !isPortalUrl)
+    return NextResponse.next();
 
-  if (!token) {
+  // if the request is for the portal and there is no token, redirect to login
+  if (!token && isPortalUrl) {
     return NextResponse.redirect(new URL('/login', request.url));
   } else if (token) {
     const decoded: any = jwtDecode(token.value);
@@ -21,14 +25,10 @@ export function middleware(request: NextRequest) {
 
       return NextResponse.redirect(new URL('/login', request.url));
     }
-
-    if (whitelist.includes(request.nextUrl.pathname)) {
-      return NextResponse.redirect(new URL('/', request.url));
-    }
-    if (request.nextUrl.pathname === '/') {
-      const nextUrl = '/staff';
-      return NextResponse.redirect(new URL(nextUrl, request.url));
-    }
+    // if (whitelist.includes(request.nextUrl.pathname)) {
+    //   return NextResponse.redirect(new URL('/', request.url));
+    // }
+    // const isAdmin = decoded.role === 'admin';
   }
   return NextResponse.next();
 }

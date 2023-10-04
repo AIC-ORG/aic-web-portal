@@ -5,6 +5,7 @@ export const sanityConfig: any = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'rsb1msea',
   useCdn: typeof document !== 'undefined' && process.env.NODE_ENV === 'production',
   apiVersion: '2022-11-16',
+  token: process.env.SANITY_SECRET_TOKEN,
 };
 
 export const sanityClient = createClient(sanityConfig);

@@ -16,6 +16,7 @@ const LoginPage = () => {
     password: '',
   });
   const [loading, setLoading] = React.useState(false);
+  const [loginError, setLoginError] = React.useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -30,6 +31,7 @@ const LoginPage = () => {
       });
     }
     setLoading(true);
+    setLoginError('');
     try {
       const res = await api.post('/auth/login', data);
       if (res.status === 200) {
@@ -41,9 +43,18 @@ const LoginPage = () => {
       }
       window.location.href = '/';
     } catch (error: any) {
-      setError(error?.response?.data?.error ?? {});
+      console.log(error?.response?.data?.error ?? error);
+      setLoginError(error?.response?.data?.error ?? 'Something went wrong.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleErrorOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setError({ ...error, [e.target.name]: `${e.target.name} is required` });
+    } else {
+      setError({ ...error, [e.target.name]: '' });
     }
   };
 
@@ -61,14 +72,17 @@ const LoginPage = () => {
           onSubmit={handleSubmit}
           className="flex flex-col gap-y-6 max-w-[400px] mx-auto items-center justify-center w-full mt-10"
         >
+          {loginError && <p className="text-red-500 px-2">{loginError}</p>}
           <div className="flex text-sm flex-col w-full">
             <input
               type="email"
               name="email"
               value={data.email}
               onChange={handleChange}
+              onBlur={handleErrorOnBlur}
               placeholder="Email"
               className="w-full p-3 rounded-lg border-2 border-black/60 focus:border-black focus:border-[2.5px] duration-300 outline-none"
+              required
             />
             {error.email && <p className="text-red-500 px-2">{error.email}</p>}
           </div>
@@ -78,8 +92,10 @@ const LoginPage = () => {
               name="password"
               value={data.password}
               onChange={handleChange}
+              onBlur={handleErrorOnBlur}
               placeholder="Password"
               className="w-full p-3 rounded-lg border-2 border-black/60 focus:border-black focus:border-[2.5px] duration-300 outline-none"
+              required
             />
             {error.password && <p className="text-red-500 px-2">{error.password}</p>}
           </div>
