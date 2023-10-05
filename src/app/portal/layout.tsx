@@ -6,7 +6,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex bg-black/90 w-full h-screen">
       <SideBar />
-      <div className="flex bg-white text-black flex-col w-full">
+      <div className="flex bg-white text-black flex-col w-full overflow-y-auto h-screen">
         {/* <NavBar /> */}
         <div className="flex flex-col w-full h-full p-11">{children}</div>
       </div>

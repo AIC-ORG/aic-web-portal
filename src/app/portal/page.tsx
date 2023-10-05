@@ -4,8 +4,8 @@ import React from 'react';
 const HomePage = () => {
   return (
     <div className="">
-      {/* <OverView /> */}
-      {/* <OverView /> */}
+      <OverView />
+      <OverView />
       {/* <OverView /> */}
     </div>
   );
