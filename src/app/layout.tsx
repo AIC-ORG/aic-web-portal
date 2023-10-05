@@ -2,6 +2,7 @@ import NavBar from '@/components/shared/NavBar';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Luckiest_Guy } from 'next/font/google';
+import Providers from './providers';
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -29,8 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${inter.variable} ${luckGuy.variable}`}>
-        {children}
-        {/* {modal} */}
+        <Providers>
+          {children}
+          {/* {modal} */}
+        </Providers>
       </body>
     </html>
   );
