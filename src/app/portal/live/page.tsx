@@ -1,16 +1,20 @@
 'use client';
+import Modal from '@/components/core/ModalRoute';
+import CreateStream from '@/components/portal/live/CreateStream';
 import PastStreams from '@/components/portal/live/PastStreams';
 import StreamsTable from '@/components/portal/live/StreamsTable';
 import { sampleStreams } from '@/components/portal/live/sample';
 import { EStreamStatus, IStream } from '@/types/stream.type';
-import { TabGroup, TabList, Tab, TabPanels, TabPanel, Button } from '@tremor/react';
+import { TabGroup, TabList, Tab, TabPanels, TabPanel, Button, Card } from '@tremor/react';
 import React, { useState } from 'react';
+import { BiCalendar, BiCameraMovie, BiChevronRight, BiX } from 'react-icons/bi';
 
 const LivePage = () => {
   const [streams, setStreams] = useState<IStream[]>(
     sampleStreams.filter((s) => s.status === EStreamStatus.LIVE),
   );
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className=" w-full flex-col gap-y-6">
@@ -23,7 +27,9 @@ const LivePage = () => {
         <TabPanels>
           <TabPanel>
             <div className="flex w-full flex-col h-full">
-              <Button className="w-fit ml-auto">Create a new stream</Button>
+              <Button onClick={() => setShowModal(true)} className="w-fit ml-auto">
+                Create a new stream
+              </Button>
               <div className="flex flex-col justify-center items-center min-h-[50vh]">
                 {!loading && streams.length === 0 && (
                   <h1 className=" opacity-60 text-xl text-center font-bold">
@@ -39,6 +45,7 @@ const LivePage = () => {
           </TabPanel>
         </TabPanels>
       </TabGroup>
+      {showModal && <CreateStream onClose={() => setShowModal(false)} />}
     </div>
   );
 };
