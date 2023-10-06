@@ -50,7 +50,7 @@ const LoginPage = () => {
       }
     } catch (error: any) {
       console.log(error?.response?.data?.error ?? error);
-      setLoginError(error?.response?.data?.error ?? 'Something went wrong.');
+      setLoginError(error?.response?.data?.message ?? 'Something went wrong.');
     } finally {
       setLoading(false);
     }

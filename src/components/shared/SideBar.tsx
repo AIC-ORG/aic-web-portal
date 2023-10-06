@@ -6,6 +6,7 @@ import { sideBarLinks } from './routes';
 import { usePathname } from 'next/navigation';
 import { SanityIcon } from '../icons';
 import { BsLayoutSidebar, BsLayoutSidebarInset } from 'react-icons/bs';
+import { deleteCookie } from 'cookies-next';
 
 const SideBar = () => {
   const [active, setActive] = React.useState('');
@@ -23,6 +24,12 @@ const SideBar = () => {
       }
     });
   }, []);
+
+  const handleLogout = () => {
+    deleteCookie('token');
+    window.location.reload();
+  };
+
   return (
     <>
       <button
@@ -80,13 +87,13 @@ const SideBar = () => {
             );
           })}
         </nav>
-        <Link
-          href={'/portal'}
+        <button
+          onClick={handleLogout}
           className="absolute w-full upgrade-btn bottom-0  text-white flex items-center justify-start hover:bg-black py-4 pl-6"
         >
           <BiLogOut className="mr-3" />
           Logout
-        </Link>
+        </button>
       </aside>
     </>
   );
