@@ -11,7 +11,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         <SideBar />
         <div className="flex bg-white text-black flex-col w-full overflow-y-auto h-screen">
           <AdminNav />
-          <div className="flex flex-col w-full h-full p-11">{children}</div>
+          <div className="flex flex-col w-full h-full sm:px-8 p-3">{children}</div>
         </div>
       </div>
     </AuthProvider>

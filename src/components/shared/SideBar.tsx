@@ -28,7 +28,7 @@ const SideBar = () => {
       <button
         onClick={() => setOpen(!open)}
         className={` sm:hidden ${
-          open ? 'text-white hover:bg-slate-950 top-6' : 'hover:bg-slate-200 top-2'
+          open ? 'text-white hover:bg-slate-950 top-6' : 'hover:bg-slate-200 top-5 '
         } absolute z-[51] left-2 p-1 rounded-md border  duration-300`}
       >
         {open ? <BsLayoutSidebarInset /> : <BsLayoutSidebar />}
@@ -36,7 +36,7 @@ const SideBar = () => {
       {/* overlAY */}
       {open && (
         <div
-          className="absolute top-0 left-0 w-full h-screen bg-black/90 z-40"
+          className="absolute top-0 left-0 w-full h-screen bg-black/50 z-40"
           onClick={() => setOpen(false)}
         ></div>
       )}
@@ -63,18 +63,22 @@ const SideBar = () => {
           </a>
         </div>
         <nav className="text-white text-base font-semibold pt-3">
-          {sideBarLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.link}
-              className={`flex duration-500 border-l-4 border-transparent  hover:bg-light-dark items-center text-white py-4 pl-6 nav-item 
-            ${active === link.link ? 'bg-light-dark  border-white ' : 'hover:bg-light-dark'}
+          {sideBarLinks.map((link) => {
+            const isDash = link.link === '/portal' || link.link === '/portal/' || link.link === '/';
+            const isActive = isDash ? active === link.link : active.startsWith(link.link);
+            return (
+              <Link
+                key={link.name}
+                href={link.link}
+                className={`flex duration-500 border-l-4 border-transparent  hover:bg-light-dark items-center text-white py-4 pl-6 nav-item 
+            ${isActive ? 'bg-light-dark  border-white ' : 'hover:bg-light-dark'}
             `}
-            >
-              {link.icon}
-              {link.name}
-            </Link>
-          ))}
+              >
+                {link.icon}
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
         <Link
           href={'/portal'}

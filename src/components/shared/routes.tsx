@@ -18,7 +18,7 @@ export const sideBarLinks = [
   {
     name: 'Web Content',
     icon: <BiGlobe className=" mr-3" />,
-    link: '/portal/bio' as any,
+    link: '/portal/web-content' as any,
   },
   {
     name: 'Videos',

@@ -31,10 +31,10 @@ const AdminNav = () => {
 
   return (
     <div className=" border-b sticky h-[70px] top-0 bg-accent z-10 w-full items-center flex p-5 pl-8 justify-between">
-      <h1 title={title} className=" capitalize font-bold text-sm truncate">
+      <h1 title={title} className=" capitalize ml-2 sm:ml-0 font-bold text-sm truncate">
         {title}
       </h1>
-      <div className="flex text-black/70 items-center sm:gap-x-16 gap-x-4">
+      <div className="flex text-black/70 items-center sm:gap-x-8 gap-x-4">
         <div className="flex items-center gap-x-4">
           <div className="2sm:flex hidden bg-white rounded-md py-1.5 px-3 items-center gap-x-2">
             <BiSearch size={15} />
