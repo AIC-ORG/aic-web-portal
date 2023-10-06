@@ -1,4 +1,4 @@
-import { FaShoppingBag } from 'react-icons/fa';
+import { FaShoppingBag, FaUserCircle } from 'react-icons/fa';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { MdMusicNote, MdMovie } from 'react-icons/md';
 import { RiSignalTowerFill } from 'react-icons/ri';
@@ -34,5 +34,10 @@ export const sideBarLinks = [
     name: 'Live',
     icon: <RiSignalTowerFill className=" mr-3" />,
     link: '/portal/live' as any,
+  },
+  {
+    name: 'Account',
+    icon: <FaUserCircle className=" mr-3" />,
+    link: '/portal/account' as any,
   },
 ];

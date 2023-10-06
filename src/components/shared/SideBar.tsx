@@ -42,7 +42,7 @@ const SideBar = () => {
       )}
       <aside
         // className="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl"
-        className={`sm:relative z-50 bg-black/90 absolute duration-500 top-0 bg-sidebar h-screen w-64 sm:block shadow-xl ${
+        className={`sm:relative z-50 bg-black absolute duration-500 top-0 h-screen w-64 sm:block shadow-xl ${
           open ? 'left-0' : ' -left-[1000px] sm:left-0 sm:block'
         }`}
       >
@@ -67,8 +67,8 @@ const SideBar = () => {
             <Link
               key={link.name}
               href={link.link}
-              className={`flex duration-500 border-l-4 border-transparent  hover:bg-black items-center text-white py-4 pl-6 nav-item 
-            ${active === link.link ? 'bg-black  border-white ' : 'hover:bg-black'}
+              className={`flex duration-500 border-l-4 border-transparent  hover:bg-light-dark items-center text-white py-4 pl-6 nav-item 
+            ${active === link.link ? 'bg-light-dark  border-white ' : 'hover:bg-light-dark'}
             `}
             >
               {link.icon}

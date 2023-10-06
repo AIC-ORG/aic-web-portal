@@ -23,6 +23,7 @@ const config: Config = {
       },
       colors: {
         // light mode
+        'light-dark': '#1a1919', // custom
         tremor: {
           brand: {
             faint: '#eff6ff', // blue-50

@@ -13,14 +13,18 @@ const MusicIndex = ({ musics }: MusicIndexProps) => {
   return (
     <div className=" w-full flex-col">
       {musics[0].title}
-      {musics[0].lyrics.map((lyric) => (
-        <p
-          key={lyric._key}
-          style={{ fontWeight: lyric.children[0].marks.includes('strong') ? 'bold' : 'normal' }}
-        >
-          {lyric.children.map((child) => child.text).join('')}
-        </p>
-      ))}
+      {musics[0].lyrics.map((lyric) => {
+        const isStrong = lyric.children[0].marks.includes('strong');
+        return (
+          <p
+            key={lyric._key}
+            className=" text-sm"
+            style={{ fontWeight: isStrong ? 'bold' : 'normal', margin: isStrong ? '1rem 0' : '0' }}
+          >
+            {lyric.children.map((child) => child.text).join('')}
+          </p>
+        );
+      })}
     </div>
   );
 };

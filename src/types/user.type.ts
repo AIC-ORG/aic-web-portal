@@ -1,11 +1,11 @@
-export interface user {
+export interface IUser {
   id: string;
   names: string;
   email: string;
   telephone: string;
   password: string;
   profile: string;
-  role: userRole;
+  role: UserRole;
   verificationStatus: string;
   verificationCode: any;
   verificationExpires: any;
@@ -17,7 +17,7 @@ export interface user {
   streamId: any;
 }
 
-export enum userRole {
+export enum UserRole {
   ARTIST = 'ARTIST',
   USER = 'USER',
 }
