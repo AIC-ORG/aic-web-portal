@@ -1,4 +1,4 @@
-import OverView from '@/components/dashboard/OverView';
+import OverView from '@/components/portal/dashboard/OverView';
 import React from 'react';
 
 const HomePage = () => {

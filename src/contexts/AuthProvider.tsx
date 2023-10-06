@@ -4,6 +4,7 @@ import { AuthApi } from '@/utils/fetch';
 import { getCookie } from 'cookies-next';
 import { usePathname } from 'next/navigation';
 import React, { createContext, useEffect, useState } from 'react';
+import { BiLoader } from 'react-icons/bi';
 
 interface AuthContextProps {
   user: IUser | null;
@@ -55,7 +56,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthContext.Provider value={{ user, token, setToken, setUser }}>
       {init && !isAuthPage ? (
-        <div className=" w-full flex flex-col h-screen items-center justify-center">Loading ..</div>
+        <div className=" w-full flex flex-col h-screen items-center justify-center">
+          <BiLoader size={30} className=" animate-spin" />
+          Loading. Please Wait ...
+        </div>
       ) : (
         children
       )}

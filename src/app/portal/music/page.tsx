@@ -16,7 +16,6 @@ async function getMusics() {
 
 const MusicPage = async () => {
   const data = await getMusics();
-  console.log(data);
   return <MusicIndex musics={data} />;
 };
 
