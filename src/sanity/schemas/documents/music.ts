@@ -32,6 +32,27 @@ export default {
       type: 'array',
       of: [{ type: 'block' }],
     },
+    // producer
+    {
+      name: 'producer',
+      title: 'Producer',
+      type: 'string',
+      validation: (Rule: any) => Rule.required(),
+    },
+    // featured artists
+    {
+      name: 'featuredArtists',
+      title: 'Featured Artists',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    // credits
+    {
+      name: 'credits',
+      title: 'Credits',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
     // thumbnail
     {
       name: 'thumbnail',
@@ -45,14 +66,12 @@ export default {
       title: 'Album',
       type: 'reference',
       to: [{ type: 'album' }],
-      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'tags',
       title: 'Tags',
       type: 'array',
       of: [{ type: 'string' }],
-      validation: (Rule: any) => Rule.required(),
     },
   ],
 };

@@ -9,11 +9,11 @@ export function middleware(request: NextRequest) {
 
   // ignore the whitelist if the request is for the portal
   const isPortalUrl = request.nextUrl.pathname.startsWith('/portal');
-  if ((whitelist.includes(request.nextUrl.pathname) && !token) || !isPortalUrl)
+  if (whitelist.includes(request.nextUrl.pathname) && !token /* || !isPortalUrl */)
     return NextResponse.next();
 
   // if the request is for the portal and there is no token, redirect to login
-  if (!token && isPortalUrl) {
+  if (!token /* && isPortalUrl */) {
     return NextResponse.redirect(new URL('/login', request.url));
   } else if (token) {
     const decoded: any = jwtDecode(token.value);
@@ -28,6 +28,10 @@ export function middleware(request: NextRequest) {
     // if (whitelist.includes(request.nextUrl.pathname)) {
     //   return NextResponse.redirect(new URL('/', request.url));
     // }
+    if (request.nextUrl.pathname === '/') {
+      console.log('redirecting to portal');
+      return NextResponse.redirect(new URL('/portal', request.url));
+    }
     // const isAdmin = decoded.role === 'admin';
   }
   return NextResponse.next();
@@ -42,6 +46,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    // '/((?!api|_next/static|_next/image|favicon.ico|logo.svg|logo.png|favicon.svg).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|logo.svg|logo.png|favicon.svg).*)',
   ],
 };

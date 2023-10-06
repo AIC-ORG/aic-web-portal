@@ -1,4 +1,3 @@
-import { luckGuy } from '@/app/layout';
 import React from 'react';
 
 interface LogoProps {
@@ -6,7 +5,7 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className }) => {
-  return <div className={`${luckGuy.className} font-black ${className}`}>ARIEL WAYZ</div>;
+  return <div className={` font-luckGuy font-black ${className}`}>ARIEL WAYZ</div>;
 };
 
 export default Logo;

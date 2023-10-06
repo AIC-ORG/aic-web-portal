@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write ./src"
+    "format": "prettier --write ./src",
+    "deploy-sanity": "sanity deploy"
   },
   "dependencies": {
     "@sanity/vision": "^3.16.7",

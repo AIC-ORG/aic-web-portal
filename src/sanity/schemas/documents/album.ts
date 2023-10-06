@@ -26,12 +26,18 @@ export default {
       type: 'image',
       validation: (Rule: any) => Rule.required(),
     },
+    // release date
+    {
+      name: 'releaseDate',
+      title: 'Release Date',
+      type: 'date',
+      validation: (Rule: any) => Rule.required(),
+    },
     {
       name: 'tags',
       title: 'Tags',
       type: 'array',
       of: [{ type: 'string' }],
-      validation: (Rule: any) => Rule.required(),
     },
   ],
 };

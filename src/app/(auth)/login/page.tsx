@@ -18,6 +18,7 @@ const LoginPage = () => {
   });
   const [loading, setLoading] = React.useState(false);
   const [loginError, setLoginError] = React.useState('');
+  const [success, setSuccess] = React.useState(false);
   const queryParams = useSearchParams();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +43,7 @@ const LoginPage = () => {
           maxAge: 60 * 60 * 24,
           path: '/',
         });
+        setSuccess(true);
         const user = res.data?.data?.user;
         const redirectUrl = user?.role === 'ARTIST' ? '/portal' : '/';
         window.location.href = redirectUrl;
@@ -72,6 +74,7 @@ const LoginPage = () => {
       </div>
       <div className="lg:w-1/2 bg-banner sm:w-2/3 w-full flex flex-col items-center justify-center bg-white h-full">
         <h1 className={` font-black text-2xl font-luckGuy`}>Login</h1>
+        {success && <span className="text-green-500">Login successful</span>}
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-y-6 max-w-[400px] mx-auto items-center justify-center w-full mt-10"

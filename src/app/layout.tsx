@@ -1,4 +1,3 @@
-import NavBar from '@/components/shared/NavBar';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Luckiest_Guy } from 'next/font/google';

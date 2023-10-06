@@ -5,8 +5,6 @@ const HomePage = () => {
   return (
     <div className="">
       <OverView />
-      <OverView />
-      {/* <OverView /> */}
     </div>
   );
 };

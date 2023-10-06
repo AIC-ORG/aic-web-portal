@@ -53,13 +53,14 @@ const SideBar = () => {
           >
             Admin Portal
           </Link>
-          <Link
-            href={'/admin' as any}
+          <a
+            href={'/admin'}
+            target="_blank"
             className="w-full bg-white cta-btn font-bold gap-x-4 p-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center truncate"
           >
             <SanityIcon />
             Go To Studio
-          </Link>
+          </a>
         </div>
         <nav className="text-white text-base font-semibold pt-3">
           {sideBarLinks.map((link) => (
