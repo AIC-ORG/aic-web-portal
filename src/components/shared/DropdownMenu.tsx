@@ -1,12 +1,14 @@
 import React, { useState, useRef, Fragment } from 'react';
 import { BiDotsVerticalRounded, BiEdit, BiTrash } from 'react-icons/bi';
 import { Menu, Transition } from '@headlessui/react';
+import Link from 'next/link';
 
 interface DropdownMenuProps {
   index?: number;
+  id: string;
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ index = 1 }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ index = 1, id }) => {
   const [isOpen, setIsOpen] = useState(false);
   // const dropdownRef = useRef(null);
 
@@ -55,26 +57,28 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ index = 1 }) => {
           <div className="px-1 py-1 ">
             <Menu.Item>
               {({ active }) => (
-                <button
+                <Link
+                  href={`/admin/desk/music;${id}`}
                   className={`${
                     active ? 'bg-black text-white' : 'text-gray-900'
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   <BiEdit className="mr-2 h-5 w-5" aria-hidden="true" />
                   Edit
-                </button>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <button
+                <Link
+                  href={`/admin/desk/music;${id}`}
                   className={`${
                     active ? 'bg-black text-white' : 'text-gray-900'
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   <BiTrash className="mr-2 h-5 w-5 text-red-800" aria-hidden="true" />
                   Delete
-                </button>
+                </Link>
               )}
             </Menu.Item>
           </div>

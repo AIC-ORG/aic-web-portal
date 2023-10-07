@@ -1,6 +1,7 @@
 import { groq } from 'next-sanity';
 
 export const getMusicQuery = groq`*[_type == "music"]{
+  _id,
   title,
   youtubeId,
   description,
@@ -14,5 +15,6 @@ export const getMusicQuery = groq`*[_type == "music"]{
     }
   },
   album->,
-  tags
+  tags,
+  releaseDate
 }`;

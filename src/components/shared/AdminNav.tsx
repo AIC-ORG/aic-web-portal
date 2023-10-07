@@ -56,10 +56,10 @@ const AdminNav = () => {
         </div>
         <div className="flex items-center gap-x-4">
           <h2 className=" text-sm sm:flex hidden font-bold">{`${first_name} ${last_name}`}</h2>
-          <Link href="/portal/account">
+          <Link className="flex h-8 w-8" href="/portal/account">
             <Image
-              src={`https://ui-avatars.com/api/?name=${first_name}+${last_name}&bold=true`}
-              className=" rounded-full cursor-pointer"
+              src={`/images/wayz.jpeg`}
+              className=" rounded-full object-cover min-h-full min-w-full cursor-pointer"
               width={30}
               height={30}
               alt="Acc"

@@ -58,7 +58,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       {init && !isAuthPage ? (
         <div className=" w-full flex flex-col h-screen items-center justify-center">
           <BiLoader size={30} className=" animate-spin" />
-          Loading. Please Wait ...
+          Please Wait ...
         </div>
       ) : (
         children

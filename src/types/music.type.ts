@@ -1,6 +1,7 @@
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 export interface IMusic {
+  _id: string;
   credits: any;
   album: IAlbum;
   producer: string;
@@ -11,6 +12,7 @@ export interface IMusic {
   youtubeId: string;
   description: string;
   lyrics: ILyric[];
+  releaseDate: string | Date;
 }
 
 export interface IAlbum {

@@ -34,7 +34,6 @@ export default function RootLayout({
           {/* {modal} */}
         </Providers>
       </body>
-      <div id="portal-root"></div>
     </html>
   );
 }
