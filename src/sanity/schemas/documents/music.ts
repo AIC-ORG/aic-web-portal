@@ -73,5 +73,13 @@ export default {
       type: 'array',
       of: [{ type: 'string' }],
     },
+    // release date
+    {
+      name: 'releaseDate',
+      title: 'Release Date',
+      type: 'date',
+      validation: (Rule: any) => Rule.required(),
+      default: new Date().toISOString(),
+    },
   ],
 };

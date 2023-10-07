@@ -8,7 +8,11 @@ export const getMusicQuery = groq`*[_type == "music"]{
   producer,
   featuredArtists,
   credits,
-  thumbnail,
+  thumbnail {
+    asset-> {
+      url
+    }
+  },
   album->,
   tags
 }`;

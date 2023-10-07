@@ -4,7 +4,7 @@ const nextConfig = {
     typedRoutes: true,
   },
   images: {
-    domains: ['ui-avatars.com'],
+    domains: ['ui-avatars.com', 'cdn.sanity.io'],
   },
 };
 

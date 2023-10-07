@@ -38,3 +38,7 @@ next-env.d.ts
 # sanity
 .sanity
 dist
+
+# lock files
+package-lock.json
+certificates

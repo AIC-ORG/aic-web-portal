@@ -1,9 +1,11 @@
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+
 export interface IMusic {
   credits: any;
   album: IAlbum;
   producer: string;
   featuredArtists: any;
-  thumbnail: Thumbnail2;
+  thumbnail: IThumbnail;
   tags: string[];
   title: string;
   youtubeId: string;
@@ -29,18 +31,7 @@ export interface IThumbnail {
 }
 
 export interface IAsset {
-  _ref: string;
-  _type: string;
-}
-
-export interface Thumbnail2 {
-  _type: string;
-  asset: IAsset2;
-}
-
-export interface IAsset2 {
-  _ref: string;
-  _type: string;
+  url: string | StaticImport;
 }
 
 export interface ILyric {

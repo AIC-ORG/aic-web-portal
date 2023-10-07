@@ -1,15 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { BiDotsVertical } from 'react-icons/bi';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { HiOutlinePencil } from 'react-icons/hi';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useRef, Fragment } from 'react';
+import { BiDotsVerticalRounded, BiEdit, BiTrash } from 'react-icons/bi';
+import { Menu, Transition } from '@headlessui/react';
 
 interface DropdownMenuProps {
-  index: number;
+  index?: number;
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ index }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ index = 1 }) => {
   const [isOpen, setIsOpen] = useState(false);
   // const dropdownRef = useRef(null);
 
@@ -39,46 +36,51 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ index }) => {
   };
 
   return (
-    <div className="relative inline-block text-left w-1/4" ref={dropdownRef}>
-      <button
-        onClick={() => {
-          toggleDropdown();
-          closeOtherDropdowns();
-        }}
-        className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5  transition duration-150 ease-in-out bg-transparent border border-none rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
-        id="options-menu"
-        aria-haspopup="true"
-        aria-expanded={isOpen}
+    <Menu as="div" className="relative inline-block text-left">
+      <div>
+        <Menu.Button className="inline-flex w-full justify-center rounded-md  text-sm font-medium text-white ">
+          <BiDotsVerticalRounded size={30} />
+        </Menu.Button>
+      </div>
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
       >
-        <FontAwesomeIcon icon={faEllipsisV} className="text-white" />
-      </button>
-
-      {isOpen && (
-        <div
-          className="origin-top-right absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
-          aria-orientation="vertical"
-          aria-labelledby="options-menu"
-          style={{
-            minWidth: `${(dropdownRef.current as HTMLDivElement)?.clientWidth}px`,
-          }}
-        >
-          <button
-            onClick={handleDelete}
-            className="flex flex-row gap-4 justify-center items-center text-xl py-2 text-red-700 hover:bg-red-100 hover:text-red-900 w-full "
-          >
-            <RiDeleteBin6Line style={{ Width: '40px', height: '40px' }} />
-            Delete
-          </button>
-          <button
-            onClick={handleUpdate}
-            className="flex flex-row gap-4 py-2 text-xl text-blue-700 items-center justify-center hover:bg-blue-100 hover:text-blue-900 w-full "
-          >
-            <HiOutlinePencil style={{ Width: '40px', height: '40px' }} />
-            Update
-          </button>
-        </div>
-      )}
-    </div>
+        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="px-1 py-1 ">
+            <Menu.Item>
+              {({ active }) => (
+                <button
+                  className={`${
+                    active ? 'bg-black text-white' : 'text-gray-900'
+                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                >
+                  <BiEdit className="mr-2 h-5 w-5" aria-hidden="true" />
+                  Edit
+                </button>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <button
+                  className={`${
+                    active ? 'bg-black text-white' : 'text-gray-900'
+                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                >
+                  <BiTrash className="mr-2 h-5 w-5 text-red-800" aria-hidden="true" />
+                  Delete
+                </button>
+              )}
+            </Menu.Item>
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   );
 };
 

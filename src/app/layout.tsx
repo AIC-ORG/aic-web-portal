@@ -1,4 +1,4 @@
-import './globals.css';
+import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter, Luckiest_Guy } from 'next/font/google';
 import Providers from './providers';
@@ -34,6 +34,7 @@ export default function RootLayout({
           {/* {modal} */}
         </Providers>
       </body>
+      <div id="portal-root"></div>
     </html>
   );
 }
