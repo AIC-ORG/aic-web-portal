@@ -1,3 +1,4 @@
+'use client';
 import Lyrics from '@/components/website/music/lyrics';
 import Player from '@/components/website/music/player';
 import Suggested from '@/components/website/music/suggested';
@@ -5,7 +6,7 @@ import MainLayout from '@/layouts/MainLayout';
 import { getMusicQuery } from '@/sanity/queries/music.query';
 import { sanityClient } from '@/sanity/sanity.client';
 import { IMusic } from '@/types/music.type';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 
 const MusicIdPage = () => {
@@ -50,8 +51,7 @@ const MusicIdPage = () => {
                   <span>Released: {music?.releaseDate as string}</span>
                 </div>
               </div>
-              {/* @ts-ignore */}
-              <Suggested />
+              <Suggested otherMusics={otherMusics} />
             </div>
             <h1 className=" mt-6 text-xl px-2">Lyrics of {music?.title}</h1>
             <Lyrics />

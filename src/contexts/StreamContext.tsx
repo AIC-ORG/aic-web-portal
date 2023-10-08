@@ -1,3 +1,4 @@
+'use client';
 import { ReactNode, createContext, useContext, useState } from 'react';
 
 const StreamContext = createContext<any>({});

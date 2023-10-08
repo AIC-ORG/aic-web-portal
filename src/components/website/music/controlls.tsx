@@ -1,10 +1,15 @@
 import { Slider } from '@mui/material';
 import { BiPause, BiCog, BiSkipNext, BiSkipPrevious, BiPlay } from 'react-icons/bi';
 import { usePlayer } from '@/contexts/PlayerContext';
-import { formatTime } from '@/utils';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
+import { formatTime } from '@/utils/funcs';
 
-const Controls = ({ vidEl, togglePlay }) => {
+interface ControlsProps {
+  vidEl: HTMLVideoElement;
+  togglePlay: () => void;
+}
+
+const Controls: FC<ControlsProps> = ({ vidEl, togglePlay }) => {
   const { playerState } = usePlayer();
 
   //   useEffect(()=>{
@@ -22,7 +27,8 @@ const Controls = ({ vidEl, togglePlay }) => {
         <Slider
           className="w-full translate-y-1"
           onChange={(e) => {
-            vidEl.currentTime = Number(e.target.value);
+            // @ts-ignore
+            vidEl.currentTime = Number(e?.target?.value);
           }}
           min={0}
           max={Number.isNaN(vidEl?.duration) ? 0 : vidEl?.duration}

@@ -106,7 +106,7 @@ const Player = ({ src, ytId, thumbnail, reference }: any) => {
               </div>
             )}
           </div>
-          {vidEl && <Controls togglePlay={togglePlay} vidEl={vidEl?.current} />}
+          {vidEl && <Controls togglePlay={togglePlay} vidEl={vidEl?.current!} />}
         </div>
       )}
     </div>

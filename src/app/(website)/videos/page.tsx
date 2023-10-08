@@ -1,12 +1,11 @@
 'use client';
-import MainLayout from '@/layouts/MainLayout';
-import { BsPlay } from 'react-icons/bs';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { getMusicQuery } from '@/sanity/queries/music.query';
 import { sanityClient } from '@/sanity/sanity.client';
 import { IMusic } from '@/types/music.type';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { BsPlay } from 'react-icons/bs';
 
 const VideosPage = () => {
   const [musics, setMusics] = useState<IMusic[]>([]);
