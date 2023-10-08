@@ -37,7 +37,7 @@ const MusicIdPage = () => {
       <div className="min-h-[90vh] p-4 text-white flex flex-col">
         {loading ? (
           <div className="loader flex w-full justify-center">Loading...</div>
-        ) : !music ? (
+        ) : !music && !loading ? (
           <div className="loader flex w-full justify-center">No music found</div>
         ) : (
           <>

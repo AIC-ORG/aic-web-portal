@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
-import HeroImage from '@/assets/Inwedding.jpeg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
@@ -18,7 +17,11 @@ const HomeBio = () => {
       </div>
       <div className="max-w-screen-lg  my-12 overflow-hidden bg-[#390101]  mx-auto flex flex-col md:flex-row items-center justify-center   mt-9  ">
         <div className=" md:mt-[-10px] md:w-1/2 md:ml-[-7%] h-100">
-          <img src={HeroImage} alt="my profile" className=" mt-[-.51%] sm:mx-[-.21%] " />
+          <img
+            src={'/images/Inwedding.jpeg'}
+            alt="my profile"
+            className=" mt-[-.51%] sm:mx-[-.21%] "
+          />
         </div>
 
         <div className="flex py-3 flex-col items-center justify-center md:w-1/2 text-slate-300 md:p-6">

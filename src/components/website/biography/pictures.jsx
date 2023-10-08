@@ -1,7 +1,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
-import img2 from '../../assets/pic5.jpg';
 
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md';
 const Pictures = () => {
@@ -26,7 +25,11 @@ const Pictures = () => {
       {/* Image */}
       <div className="max-h-80vh bg-bg-african text-center text-white overflow-hidden flex mb-32 flex-col">
         <div className="h-[40%] relative">
-          <img src={img2} alt="Random Image" className="w-full h-[50vh] object-cover" />
+          <img
+            src={'/images/pic5.jpg'}
+            alt="Random Image"
+            className="w-full h-[50vh] object-cover"
+          />
         </div>
 
         {/* Text content */}

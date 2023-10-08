@@ -1,17 +1,6 @@
 'use client';
 /* eslint-disable @next/next/no-img-element */
-import pic10 from '@/assets/pic10.jpg';
-import img from '@/assets/pic12.jpg';
-import pic13 from '@/assets/pic13.jpg';
-import pic2 from '@/assets/pic2.jpg';
-import pic3 from '@/assets/pic3.jpg';
-import pic6 from '@/assets/pic6.jpg';
-import pic7 from '@/assets/pic7.jpg';
-import pic8 from '@/assets/pic8.jpg';
-import pic9 from '@/assets/pic9.jpg';
-import Footer from '@/components/website/shared/footer';
 import MidNav from '@/components/website/shared/mid-nav';
-import Navbar from '@/components/website/shared/navbar';
 import Socials from '@/components/website/shared/socials';
 import Link from 'next/link';
 import {
@@ -27,31 +16,31 @@ import {
 
 const Homepage = () => {
   const pics = [
-    { image: img, option: 'MERCH', icon: <FaTshirt />, link: '/store' },
+    { image: '/images/pic12.jpg', option: 'MERCH', icon: <FaTshirt />, link: '/store' },
     {
-      image: pic2,
+      image: '/images/pic2.jpg',
       option: 'DISCOGRAPHY',
       icon: <FaCompactDisc />,
       link: '/albums',
     },
     {
-      image: pic3,
+      image: '/images/pic3.jpg',
       option: 'UPCOMING SHOWS',
       icon: <FaMicrophone />,
       link: '/live',
     },
     {
-      image: pic6,
+      image: '/images/pic6.jpg',
       option: 'SHAYO OUT NOW',
       icon: <FaNewspaper />,
       link: '/news',
     },
-    { image: pic7, option: 'MUSIC', icon: <FaMusic />, link: '/music' },
-    { image: pic8, option: 'VIDEOS', icon: <FaVideo />, link: '/videos' },
-    { image: pic9, option: 'PHOTOS', icon: <FaCamera />, link: '/photos' },
-    { image: pic10, option: 'BIOGRAPHY', icon: <FaHistory />, link: '/bio' },
+    { image: '/images/pic7.jpg', option: 'MUSIC', icon: <FaMusic />, link: '/music' },
+    { image: '/images/pic8.jpg', option: 'VIDEOS', icon: <FaVideo />, link: '/videos' },
+    { image: '/images/pic9.jpg', option: 'PHOTOS', icon: <FaCamera />, link: '/photos' },
+    { image: '/images/pic10.jpg', option: 'BIOGRAPHY', icon: <FaHistory />, link: '/bio' },
     {
-      image: pic13,
+      image: '/images/pic13.jpg',
       option: 'LATEST NEWS',
       date: ' 11 September 2023',
       icon: <FaNewspaper />,
@@ -59,57 +48,58 @@ const Homepage = () => {
     },
   ];
   return (
-    <div className="full-container">
-      <div className="home-container">
-        <div className="home-video">
-          <div className="video-wrapper flex flex-col max-h-[575px]">
-            <video autoPlay loop muted className="home-video">
-              <source src={'/ariel.mp4'} type="video/mp4" />
-            </video>
-            <div className="video-overlay"></div>
-          </div>
-          <Socials />
+    <>
+      <div className="home-video">
+        <div className="video-wrapper flex flex-col max-h-[575px]">
+          <video autoPlay loop muted className="home-video">
+            <source src={'/ariel.mp4'} type="video/mp4" />
+          </video>
+          <div className="video-overlay"></div>
         </div>
-
-        <div className="header-song five:text-2xl">
-          <p>"AWAY" is out now</p>
-          <button type="button">STREAM</button>
-        </div>
-        <MidNav noLogin />
-
-        <div className="flex flex-col w-full">
-          <div className="grid w-full lg:grid-cols-3 md:grid-cols-3 five:grid-cols-2   gap11">
-            {pics.map((pic, i) => (
-              <Link
-                href={pic.link as any}
-                key={i}
-                className="flex duration-300 p-0 m-0 border-0 cursor-pointer music-card max-w[400px] relative aspect-square overflow-hidden flex-col items-center justify-center bg-white roundedlg shadow-md"
-              >
-                <img
-                  className=" absolute top-0 bottom-0 right-0 left-0 min-w-full min-h-full object-cover"
-                  src={pic.image as any}
-                  alt=""
-                  loading="lazy"
-                />
-                <div className="w-full text-white h-full text-center bg-[#0e0404]/70 items-center justify-center flex flex-col z-10">
-                  <button className="text-xl rounded-full w-11 border-2 h-11 items-center justify-center flex font-semibold">
-                    {/* <BsMusicNote /> */}
-                    {pic.icon}
-                  </button>
-                  <span className=" font-roboto-serif">{pic.date} </span>
-
-                  <p className="text-2xl mt-4 font-bold text-center" key={i}>
-                    {pic.option}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <Footer />
+        <Socials />
       </div>
-    </div>
+
+      <div className="absolute top-24 left-10  font-luckGuy">
+        <p className="text-white font-bold font-luckiest-guy">"AWAY" is out now</p>
+        <button
+          type="button"
+          className="bg-white text-black px-2.5 py-2.5 font-bold border-none text-base"
+        >
+          STREAM
+        </button>
+      </div>
+      <MidNav noLogin />
+
+      <div className="flex flex-col w-full">
+        <div className="grid w-full lg:grid-cols-3 md:grid-cols-3 five:grid-cols-2   gap11">
+          {pics.map((pic, i) => (
+            <Link
+              href={pic.link as any}
+              key={i}
+              className="flex duration-300 p-0 m-0 border-0 cursor-pointer music-card max-w[400px] relative aspect-square overflow-hidden flex-col items-center justify-center bg-white roundedlg shadow-md"
+            >
+              <img
+                className=" absolute top-0 bottom-0 right-0 left-0 min-w-full min-h-full object-cover"
+                src={pic.image as string}
+                alt=""
+                loading="lazy"
+              />
+              <div className="w-full text-white h-full text-center bg-[#0e0404]/70 items-center justify-center flex flex-col z-10">
+                <button className="text-xl rounded-full w-11 border-2 h-11 items-center justify-center flex font-semibold">
+                  {/* <BsMusicNote /> */}
+                  {pic.icon}
+                </button>
+                <span className=" font-roboto-serif">{pic.date} </span>
+
+                <p className="text-2xl mt-4 font-bold text-center" key={i}>
+                  {pic.option}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 

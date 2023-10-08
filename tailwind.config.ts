@@ -20,6 +20,7 @@ const config: Config = {
     },
     screens: {
       '2sm': '512px',
+      five: '512px',
       sm: '640px',
       md: '768px',
       tab: '960px',
@@ -41,7 +42,8 @@ const config: Config = {
         'main-yellow': '#FFD700',
         'main-gray': '#C0C0C0',
         'bg-african': '#390101',
-        'dark-brownish': '#1d0707',
+        'bg-main': '#0e0101',
+        'dark-brownish': '#0e0101',
         tremor: {
           brand: {
             faint: '#eff6ff', // blue-50

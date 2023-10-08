@@ -1,7 +1,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
-import img1 from '../../assets/pic2.jpg';
 
 const HomeBioTwo = () => {
   useEffect(() => {
@@ -19,7 +18,7 @@ const HomeBioTwo = () => {
       </div>
       <div className="max-w-screen-lg  overflow-hidden bg-[#390101]  mx-auto flex flex-col md:flex-row-reverse items-center justify-center mt-2 md:mt-9 ">
         <div className="md:w-1/2 md:ml-[14%]">
-          <img src={img1} alt="my profile" className=" mt-[-.51%] sm:mx-[-.1%]" />
+          <img src={'/images/pic2.jpg'} alt="my profile" className=" mt-[-.51%] sm:mx-[-.1%]" />
         </div>
         <div className="flex flex-col max-w-sm items-center justify-center md:w-1/2 text-slate-300 md:p-6">
           <p className="sm:text-white sm:px-4 sm:mx-auto max-w-sm md:max-w-md font-Roman sm:py-6">
