@@ -1,13 +1,8 @@
-import NavBar from '@/components/shared/NavBar';
+import MainLayout from '@/layouts/MainLayout';
 import React from 'react';
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div>
-      <NavBar />
-      {children}
-    </div>
-  );
+  return <MainLayout>{children}</MainLayout>;
 };
 
 export default AdminLayout;

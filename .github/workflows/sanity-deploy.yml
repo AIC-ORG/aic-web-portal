@@ -1,9 +1,9 @@
 name: Deploy Sanity
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/sanity/schemas/**'
+  release:
+    # branches: [main]
+    # paths:
+    #   - 'src/sanity/schemas/**'
 jobs:
   sanity-deploy:
     runs-on: ubuntu-latest

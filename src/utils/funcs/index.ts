@@ -28,3 +28,11 @@ export const timeFormater = (date: string) => {
   });
   return formattedDate;
 };
+
+export const getRandomIndex: (e: any, l: any) => number = (max: number, lastIndices: number[]) => {
+  const index = Math.floor(Math.random() * max);
+  if (lastIndices.includes(index)) {
+    return getRandomIndex(max, lastIndices) as number;
+  }
+  return index as number;
+};

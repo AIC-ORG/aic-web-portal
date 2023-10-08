@@ -15,11 +15,16 @@ const config: Config = {
       sans: ['Inter', 'sans-serif'],
       inter: 'var(--font-inter)',
       luckGuy: 'var(--font-luckiest-guy)',
+      'roboto-serif': ['Roboto Serif', 'serif'],
+      Roman: ['Luxurious Roman', 'serif'],
     },
     screens: {
       '2sm': '512px',
       sm: '640px',
       md: '768px',
+      tab: '960px',
+      ltab: '780px',
+      xtab: '960px',
       lg: '1024px',
       xl: '1280px', // 1280px
       '2xl': '1536px', // 1536px
@@ -32,6 +37,11 @@ const config: Config = {
       colors: {
         // light mode
         'light-dark': '#1a1919', // custom
+        'dark-blue': '#141448',
+        'main-yellow': '#FFD700',
+        'main-gray': '#C0C0C0',
+        'bg-african': '#390101',
+        'dark-brownish': '#1d0707',
         tremor: {
           brand: {
             faint: '#eff6ff', // blue-50
