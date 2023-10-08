@@ -34,8 +34,8 @@ const MusicIdPage = () => {
   }, []);
 
   return (
-    <MainLayout noBanner>
-      <div className="min-h-[90vh] p-4 text-white flex flex-col">
+    <>
+      <div className="min-h-[90vh] bg-black p-4 text-white flex flex-col">
         {loading ? (
           <div className="loader flex w-full justify-center">Loading...</div>
         ) : !music && !loading ? (
@@ -49,16 +49,17 @@ const MusicIdPage = () => {
                   <h1 className=" font-luckyGuy">{music?.title}</h1>
                   <span>{music?.description}</span>
                   <span>Released: {music?.releaseDate as string}</span>
+                  <span>Produced by: {music?.producer as string}</span>
                 </div>
               </div>
-              <Suggested otherMusics={otherMusics} />
+              <Suggested otherMusics={otherMusics} activeMusic={music} />
             </div>
-            <h1 className=" mt-6 text-xl px-2">Lyrics of {music?.title}</h1>
-            <Lyrics />
+            {/* <h1 className=" mt-6 text-xl px-2">Lyrics of {music?.title}</h1>
+            <Lyrics /> */}
           </>
         )}
       </div>
-    </MainLayout>
+    </>
   );
 };
 

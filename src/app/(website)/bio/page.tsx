@@ -15,7 +15,6 @@ const Bio = () => {
       <AboutHer />
       <HomeBioTwo />
       <Pictures />
-      <Footer />
     </div>
   );
 };
