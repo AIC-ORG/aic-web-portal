@@ -33,7 +33,12 @@ const MusicIndex = ({ musics }: MusicIndexProps) => {
           <div
             className={` lg:min-h-[10vh] rounded-b-xl absolute bottom-0 bg-black/70 p-3 py-1 left-0 flex w-full justify-between items-center`}
           >
-            <p className="text-white text-center font-bold font-size">{music.title}</p>
+            <div className="flex gap-y-1 flex-col">
+              <p className="text-white text-center font-bold font-size">{music.title}</p>
+              <p className="text-white text-sm text-center font-bold font-size">
+                {new Date(music.releaseDate).toDateString()}
+              </p>
+            </div>
             <div className=" flex items-center justify-center ">
               <DropdownMenu id={music._id} />
             </div>
