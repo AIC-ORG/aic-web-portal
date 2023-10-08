@@ -12,7 +12,7 @@ export const Logo = () => (
   </Link>
 );
 
-const MidNav = ({ hasLogo = false, noLogin = false }) => {
+const MidNav = ({ hasLogo = false, noLogin = true }) => {
   const { authenticated, setViewLogin, setAuthenticated, setUser, user } = useAuthContext();
   const [path, setPath] = React.useState('');
   const pathname = usePathname();
@@ -67,7 +67,7 @@ const MidNav = ({ hasLogo = false, noLogin = false }) => {
           Store
         </Link>
         {isArtist ? (
-          <Link href={'/admin'} className={path === '/admin' ? 'border-b-2' : ''}>
+          <Link href={'/admin' as any} className={path === '/admin' ? 'border-b-2' : ''}>
             Live (Admin)
           </Link>
         ) : (

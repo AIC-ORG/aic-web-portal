@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { BiEnvelopeOpen, BiGlobe } from 'react-icons/bi';
+import { BsArrow90DegUp, BsArrowUpRight } from 'react-icons/bs';
 import { FaLinkedin, FaFacebookSquare, FaInstagramSquare } from 'react-icons/fa';
 
 const Footer = () => {
@@ -8,9 +9,9 @@ const Footer = () => {
       <div className="ltab:flex w-full grid five:grid-cols-2 justify-between xtab:px-20 phone:px-4 px-2 py-10 gap-5">
         <div className="flex text-sm ltab:text-base flex-col five:items-start items-center justify-center">
           <Image
-            width={150}
-            height={150}
-            className="ltab:w-[150px] w-[100px]"
+            width={130}
+            height={130}
+            className="ltab:w-[130px] w-[100px]"
             src="/wayzone.png"
             alt=""
           />
@@ -57,8 +58,8 @@ const Footer = () => {
         </div>
         <div className="flex text-sm ltab:text-base flex-col five:items-start items-center">
           <h1 className="ltab:text-xl font-semibold">Company</h1>
-          <a className="ltab:mt-4 mt-1" href="#">
-            About
+          <a className="ltab:mt-4 font-semibold mt-1" href="/portal" target="_blank">
+            Go To Portal <BsArrowUpRight className="inline-block" />
           </a>
           <a className="ltab:mt-4 mt-1" href="#">
             Contact
