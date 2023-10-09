@@ -39,7 +39,11 @@ const StreamsTable: FC<StreamsTableProps> = ({ data }) => (
             <TableCell>
               <div className="flex items-center gap-2 p-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.thumbnail} alt="" className=" rounded-full h-14 w-14 object-cover" />
+                <img
+                  src={item.thumbnail ?? '/images/wayz.jpeg'}
+                  alt=""
+                  className=" rounded-full h-14 w-14 object-cover"
+                />
                 <div className="flex flex-col min-w-[150px] md:min-w-fit gap-y-1">
                   <Text className=" text-base opacity-70 font-semibold">{item.title}</Text>
                   <Badge color="gray">{item.status}</Badge>
@@ -50,7 +54,7 @@ const StreamsTable: FC<StreamsTableProps> = ({ data }) => (
               <Text>{new Date(item.createdAt).toDateString()}</Text>
             </TableCell>
             <TableCell>
-              <Text>{new Date(item.scheduled).toDateString()}</Text>
+              <Text>{item.scheduledAt ? new Date(item.scheduledAt).toDateString() : 'N/A'}</Text>
             </TableCell>
             <TableCell>
               <div className="flex items-center gap-2">

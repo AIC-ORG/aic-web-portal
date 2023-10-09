@@ -1,16 +1,23 @@
+import { IUser } from './user.type';
+
 export interface IStream {
+  thumbnail?: string | undefined;
   id: string;
+  roomId: string;
   title: string;
-  createdAt: Date | string;
-  scheduled: Date | string;
-  status: EStreamStatus;
-  thumbnail: string;
   description: string;
+  scheduledAt?: string;
+  createdById: string;
+  status: EStreamStatus;
+  createdAt: string;
+  updatedAt: string;
+  createdBy: IUser;
+  attendees: IUser[];
 }
 
 export enum EStreamStatus {
   LIVE = 'LIVE',
   ENDED = 'ENDED',
   CANCELLED = 'CANCELLED',
-  UPCOMING = 'UPCOMING',
+  PENDING = 'PENDING',
 }

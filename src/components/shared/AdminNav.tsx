@@ -55,7 +55,7 @@ const AdminNav = () => {
           </div>
         </div>
         <div className="flex items-center gap-x-4">
-          <h2 className=" text-sm sm:flex hidden font-bold">{`${first_name} ${last_name}`}</h2>
+          <span className=" text-sm sm:flex hidden font-bold">{`${first_name} ${last_name}`}</span>
           <Link className="flex h-8 w-8" href="/portal/account">
             <Image
               src={`/images/wayz.jpeg`}

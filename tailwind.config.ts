@@ -19,6 +19,9 @@ const config: Config = {
       Roman: ['Luxurious Roman', 'serif'],
     },
     screens: {
+      xs: '320px',
+      '2xs': '375px',
+      '3xs': '400px',
       '2sm': '512px',
       five: '512px',
       sm: '640px',
