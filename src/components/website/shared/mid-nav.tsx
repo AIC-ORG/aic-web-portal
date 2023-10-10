@@ -72,7 +72,7 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
             Live (Admin)
           </Link>
         ) : (
-          <Link href={'/live/join-live'} className={path === '/live/join-liv' ? 'border-b-2' : ''}>
+          <Link href={'/live'} className={path === '/live/join-liv' ? 'border-b-2' : ''}>
             Live (Join Stream)
           </Link>
         )}

@@ -66,8 +66,8 @@ const Homepage = async () => {
     <>
       <div className="home-video">
         <div className="video-wrapper flex flex-col max-h-[575px]">
-          <video autoPlay loop muted className="home-video">
-            <source src={content.hero?.video?.asset.url ?? '/ariel.mp4'} type="video/mp4" />
+          <video autoPlay poster={content.hero.image?.asset?.url} loop muted className="home-video">
+            <source src={content.hero?.video?.asset.url} type="video/mp4" />
           </video>
           <div className="video-overlay"></div>
         </div>

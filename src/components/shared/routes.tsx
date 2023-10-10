@@ -15,11 +15,11 @@ export const sideBarLinks = [
     icon: <MdMusicNote className=" mr-3" />,
     link: '/portal/music' as any,
   },
-  {
-    name: 'Web Content',
-    icon: <BiGlobe className=" mr-3" />,
-    link: '/portal/web-content' as any,
-  },
+  // {
+  //   name: 'Web Content',
+  //   icon: <BiGlobe className=" mr-3" />,
+  //   link: '/portal/web-content' as any,
+  // },
   {
     name: 'Videos',
     icon: <MdMovie className=" mr-3" />,
