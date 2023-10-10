@@ -1,5 +1,4 @@
 'use client';
-import { luckGuy } from '@/app/layout';
 import { api } from '@/utils/fetch';
 import { setCookie } from 'cookies-next';
 import Image from 'next/image';

@@ -1,6 +1,5 @@
 'use client';
 import { api } from '@/utils/fetch';
-import { setCookie } from 'cookies-next';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 import { FaSpinner } from 'react-icons/fa';

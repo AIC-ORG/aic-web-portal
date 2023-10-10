@@ -8,7 +8,7 @@ const inter = Inter({
   weight: ['400', '500', '900', '700', '800', '300'],
   variable: '--font-inter',
 });
-export const luckGuy = Luckiest_Guy({
+const luckGuy = Luckiest_Guy({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-luckiest-guy',
@@ -24,7 +24,7 @@ export default function RootLayout({
   modal,
 }: {
   children: React.ReactNode;
-  modal?: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
