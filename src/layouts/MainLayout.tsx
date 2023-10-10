@@ -18,7 +18,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children, noBanner }) => {
   const { viewLogin, viewSignup } = useAuthContext();
   const pathname = usePathname();
 
-  const isHome = pathname === '/';
+  const isHome = pathname === '/' || pathname === '/home';
 
   return (
     <div className="flex bg-[#100000] flex-col w-full min-h-screen justify-between">

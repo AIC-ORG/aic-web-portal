@@ -6,11 +6,11 @@ export interface IStream {
   roomId: string;
   title: string;
   description: string;
-  scheduledAt?: string;
+  scheduledAt?: string | Date;
   createdById: string;
   status: EStreamStatus;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: string | Date;
+  updatedAt: string | Date;
   createdBy: IUser;
   attendees: IUser[];
 }

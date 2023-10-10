@@ -1,7 +1,9 @@
-'use client';
 /* eslint-disable @next/next/no-img-element */
 import MidNav from '@/components/website/shared/mid-nav';
 import Socials from '@/components/website/shared/socials';
+import { getWebContentQuery } from '@/sanity/queries/web-content.query';
+import { sanityClient } from '@/sanity/sanity.client';
+import { IWebContent } from '@/types/web-content.type';
 import Link from 'next/link';
 import {
   FaCamera,
@@ -14,7 +16,20 @@ import {
   FaVideo,
 } from 'react-icons/fa';
 
-const Homepage = () => {
+export const revalidate = 15; // revalidate at most every 15 seconds
+
+async function getWebContent() {
+  const data: IWebContent[] = await sanityClient.fetch(getWebContentQuery, {
+    next: {
+      revalidate: revalidate,
+    },
+  });
+  return data;
+}
+
+const Homepage = async () => {
+  const [content] = await getWebContent();
+  console.log('content', content);
   const pics = [
     { image: '/images/pic12.jpg', option: 'MERCH', icon: <FaTshirt />, link: '/store' },
     {
@@ -52,7 +67,7 @@ const Homepage = () => {
       <div className="home-video">
         <div className="video-wrapper flex flex-col max-h-[575px]">
           <video autoPlay loop muted className="home-video">
-            <source src={'/ariel.mp4'} type="video/mp4" />
+            <source src={content.hero?.video?.asset.url ?? '/ariel.mp4'} type="video/mp4" />
           </video>
           <div className="video-overlay"></div>
         </div>
@@ -60,7 +75,7 @@ const Homepage = () => {
       </div>
 
       <div className="absolute top-24 left-10  font-luckGuy">
-        <p className="text-white font-bold font-luckiest-guy">"AWAY" is out now</p>
+        <p className="text-white font-bold font-luckiest-guy">{content.hero?.title}</p>
         <button
           type="button"
           className="bg-white text-black px-2.5 py-2.5 font-bold border-none text-base"

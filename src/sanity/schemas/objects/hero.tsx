@@ -28,5 +28,11 @@ export default {
       type: 'file',
       validation: (Rule: any) => Rule.required(),
     },
+    {
+      name: 'link',
+      title: 'Link',
+      type: 'string',
+      validation: (Rule: any) => Rule.required(),
+    },
   ],
 };

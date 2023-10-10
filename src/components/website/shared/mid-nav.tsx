@@ -1,3 +1,4 @@
+'use client';
 import { useAuthContext } from '@/contexts/AuthContext';
 import React, { useEffect } from 'react';
 import { BiX } from 'react-icons/bi';
@@ -51,7 +52,7 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
             size={30}
           />
         )}
-        <Link href={'/home'} className={path === '/home' ? 'border-b-2' : ''}>
+        <Link href={'/'} className={path === '/' ? 'border-b-2' : ''}>
           Home
         </Link>
         <Link href={'/music'} className={path === '/music' ? 'border-b-2' : ''}>

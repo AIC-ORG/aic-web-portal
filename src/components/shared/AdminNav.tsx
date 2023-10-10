@@ -5,7 +5,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { BiBell, BiCog, BiSearch } from 'react-icons/bi';
 import { useAuth } from '@/contexts/AuthProvider';
-import { BsArrowLeft } from 'react-icons/bs';
+import { BsArrowLeft, BsArrowUpRight } from 'react-icons/bs';
+import { Button } from '@tremor/react';
 
 const AdminNav = () => {
   const [title, setTitle] = useState('');
@@ -43,14 +44,19 @@ const AdminNav = () => {
       </div>
       <div className="flex text-black/70 items-center sm:gap-x-8 gap-x-4">
         <div className="flex items-center gap-x-4">
-          <div className="2sm:flex hidden bg-white rounded-md py-1.5 px-3 items-center gap-x-2">
+          {/* <div className="2sm:flex hidden bg-white rounded-md py-1.5 px-3 items-center gap-x-2">
             <BiSearch size={15} />
             <input
               type="text"
               placeholder="Search"
               className="border text-xs border-none outline-none rounded-md p-1.5"
             />
-          </div>
+          </div> */}
+          <Link href="/" target="_blank">
+            <Button>
+              View Website <BsArrowUpRight className="inline-block" />
+            </Button>
+          </Link>
           <div className="flex items-center gap-x-4 py-2.5">
             <button className="2sm:hidden">
               <BiSearch size={20} />
@@ -58,7 +64,7 @@ const AdminNav = () => {
             <button>
               <BiBell size={20} />
             </button>
-            <BiCog size={20} />
+            {/* <BiCog size={20} /> */}
           </div>
         </div>
         <div className="flex items-center gap-x-4">
