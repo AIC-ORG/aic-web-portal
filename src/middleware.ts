@@ -17,6 +17,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', request.url));
   } else if (token) {
     const decoded: any = jwtDecode(token.value);
+    console.log('decoded: ', decoded);
     const isExpired = decoded.exp * 1000 < Date.now();
     if (isExpired && !whitelist.includes(request.nextUrl.pathname)) {
       console.log("The request has a 'token' cookie? ", request.cookies.has('token'));

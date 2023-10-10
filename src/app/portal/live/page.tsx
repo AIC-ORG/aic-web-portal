@@ -5,6 +5,7 @@ import { EStreamStatus, IStream } from '@/types/stream.type';
 import { AuthApi } from '@/utils/fetch';
 import { Button, Tab, TabGroup, TabList, TabPanel, TabPanels } from '@tremor/react';
 import { useEffect, useState } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 
 const LivePage = () => {
   const [streams, setStreams] = useState<{
@@ -72,6 +73,11 @@ const LivePage = () => {
                   </h1>
                 )}
                 {streams[activeTab].length > 0 && <StreamsTable data={streams.PENDING} />}
+                {loading && (
+                  <div className="flex justify-center items-center min-h-[50vh]">
+                    <FaSpinner className="animate-spin" />
+                  </div>
+                )}
               </div>
             </div>
           </TabPanel>
@@ -84,12 +90,17 @@ const LivePage = () => {
                   </h1>
                 )}
                 {streams.ENDED.length > 0 && <StreamsTable data={streams.ENDED} />}
+                {loading && (
+                  <div className="flex justify-center items-center min-h-[50vh]">
+                    <FaSpinner className="animate-spin" />
+                  </div>
+                )}
               </div>
             </div>
           </TabPanel>
         </TabPanels>
       </TabGroup>
-      {showModal && <CreateStream onClose={() => setShowModal(false)} />}
+      {showModal && <CreateStream onClose={() => setShowModal(false)} onRefresh={getStreams} />}
     </div>
   );
 };

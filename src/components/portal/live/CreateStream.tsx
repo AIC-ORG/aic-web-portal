@@ -2,35 +2,49 @@ import Modal from '@/components/core/Modal';
 import { Button, Card } from '@tremor/react';
 import { FC, useState } from 'react';
 import { BiCalendar, BiCameraMovie, BiSolidChevronRight, BiX } from 'react-icons/bi';
+import { BsArrowLeft } from 'react-icons/bs';
+import NewStreamForm from './NewStreamForm';
 
 interface Props {
   onClose: () => void;
+  onRefresh: () => Promise<void>;
 }
 
-const CreateStream: FC<Props> = ({ onClose }) => {
-  const [next, setNext] = useState({
-    state: false,
-    component: <></>,
-    name: '',
-  });
+const defaultNext = {
+  state: false,
+  component: <></>,
+  name: '',
+};
+
+const CreateStream: FC<Props> = ({ onClose, onRefresh }) => {
+  const [next, setNext] = useState(defaultNext);
   return (
     <Modal>
       <div className="flex my-auto gap-y-6 w-full flex-col max-w-[600px] bg-white rounded-md p-11 pt-7 pb-14">
         <div className="flex w-full items-center justify-between">
-          <span className=" font-semibold text-lg">Create</span>
+          {next.state && ( // if next.state is true, show the back button
+            <BsArrowLeft
+              size={25}
+              className="cursor-pointer"
+              onClick={() => setNext({ ...defaultNext })}
+            />
+          )}
+          <span className=" font-semibold capitalize text-lg">
+            {next.name !== '' ? next.name : 'Create'}
+          </span>
           <button className=" p-1 rounded-md border-none hover:bg-slate-100" onClick={onClose}>
             <BiX size={30} />
           </button>
         </div>
         {next.state ? (
-          <></>
+          next.component
         ) : (
           <>
             <button
               onClick={() =>
                 setNext({
                   state: true,
-                  component: <></>,
+                  component: <NewStreamForm isLive onClose={onClose} />,
                   name: 'Go Live',
                 })
               }
@@ -51,7 +65,14 @@ const CreateStream: FC<Props> = ({ onClose }) => {
               onClick={() =>
                 setNext({
                   state: true,
-                  component: <></>,
+                  component: (
+                    <NewStreamForm
+                      onClose={() => {
+                        onClose();
+                        onRefresh();
+                      }}
+                    />
+                  ),
                   name: 'Schedule live stream',
                 })
               }
