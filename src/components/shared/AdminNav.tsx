@@ -1,15 +1,17 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { BiBell, BiCog, BiSearch } from 'react-icons/bi';
 import { useAuth } from '@/contexts/AuthProvider';
+import { BsArrowLeft } from 'react-icons/bs';
 
 const AdminNav = () => {
   const [title, setTitle] = useState('');
   const [paths, setPaths] = useState<string[]>([]);
   const pathname = usePathname();
+  const router = useRouter();
   const { user } = useAuth();
   const [first_name, last_name] = user?.names?.split(' ') ?? ['John', 'Doe'];
 
@@ -30,10 +32,15 @@ const AdminNav = () => {
   }, [pathname]);
 
   return (
-    <div className=" border-b sticky h-[70px] top-0 bg-accent z-10 w-full items-center flex p-5 pl-8 justify-between">
-      <h1 title={title} className=" capitalize ml-2 sm:ml-0 font-bold text-sm truncate">
+    <div className=" bg-white border-b sticky h-[70px] top-0 bg-accent z-10 w-full items-center flex p-5 pl-8 justify-between">
+      <div title={title} className=" capitalize ml-2 sm:ml-0 font-bold text-sm truncate">
+        {paths.length > 3 && (
+          <button onClick={() => router.back()}>
+            <BsArrowLeft size={20} className="inline-block mr-2" />
+          </button>
+        )}
         {title}
-      </h1>
+      </div>
       <div className="flex text-black/70 items-center sm:gap-x-8 gap-x-4">
         <div className="flex items-center gap-x-4">
           <div className="2sm:flex hidden bg-white rounded-md py-1.5 px-3 items-center gap-x-2">

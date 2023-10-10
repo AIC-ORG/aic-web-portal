@@ -12,6 +12,7 @@ import {
   Badge,
   Button,
 } from '@tremor/react';
+import Link from 'next/link';
 import { FC } from 'react';
 import { BiDotsVerticalRounded, BiRadar, BiShare } from 'react-icons/bi';
 
@@ -45,7 +46,9 @@ const StreamsTable: FC<StreamsTableProps> = ({ data }) => (
                   className=" rounded-full h-14 w-14 object-cover"
                 />
                 <div className="flex flex-col min-w-[150px] md:min-w-fit gap-y-1">
-                  <Text className=" text-base opacity-70 font-semibold">{item.title}</Text>
+                  <Link href={`/portal/live/${item.roomId}`}>
+                    <Text className=" text-base opacity-70 font-semibold">{item.title}</Text>
+                  </Link>
                   <Badge color="gray">{item.status}</Badge>
                 </div>
               </div>
@@ -69,9 +72,20 @@ const StreamsTable: FC<StreamsTableProps> = ({ data }) => (
               </button>
             </TableCell>
             <TableCell>
-              <button>
-                <BiDotsVerticalRounded size={30} />
-              </button>
+              {item.status !== 'PENDING' ? (
+                <button>
+                  <BiDotsVerticalRounded size={30} />
+                </button>
+              ) : (
+                <Link href={`/portal/live/${item.roomId}`}>
+                  <Button className=" truncate flex items-center">
+                    <span className=" flex gap-x-2 items-center">
+                      <BiRadar />
+                      Go Live
+                    </span>
+                  </Button>
+                </Link>
+              )}
             </TableCell>
           </TableRow>
         ))}

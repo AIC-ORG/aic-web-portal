@@ -21,3 +21,13 @@ export enum EStreamStatus {
   CANCELLED = 'CANCELLED',
   PENDING = 'PENDING',
 }
+
+export interface IMessage {
+  content: string;
+  id: string;
+  roomId: string;
+  senderId: string;
+  streamId: string;
+  createdAt: string;
+  sender: IUser;
+}
