@@ -1,5 +1,6 @@
 import { useAuth } from '@/contexts/AuthProvider';
 import { IStream } from '@/types/stream.type';
+import { usePathname } from 'next/navigation';
 import React, { FC } from 'react';
 import { BiLike, BiShare } from 'react-icons/bi';
 
@@ -11,15 +12,20 @@ interface Props {
 
 const StreamPlayer: FC<Props> = ({ webcamRef, remoteVideoRef, stream }) => {
   const { user } = useAuth();
+  const pathname = usePathname();
   return (
-    <div className="flex  border-2 lg:w-2/3 flex-col">
+    <div
+      className={`flex border-2 ${
+        !pathname.includes('/portal') ? 'border-bg-african ' : ''
+      } lg:w-2/3 flex-col`}
+    >
       <div className="flex overflow-hidden aspect-[16/10]">
         {user?.role === 'ARTIST' ? (
           <video className=" w-full object-cover" ref={webcamRef} autoPlay playsInline />
         ) : (
           <video
             ref={remoteVideoRef != null ? remoteVideoRef : webcamRef}
-            className="border-2"
+            className=""
             autoPlay
             playsInline
           />

@@ -1,5 +1,4 @@
 'use client';
-import { useAuthContext } from '@/contexts/AuthContext';
 import React, { useEffect } from 'react';
 import { BiX } from 'react-icons/bi';
 import { FaBars } from 'react-icons/fa';
@@ -14,7 +13,6 @@ export const Logo = () => (
 );
 
 const MidNav = ({ hasLogo = false, noLogin = true }) => {
-  const { authenticated, setViewLogin, setAuthenticated, setUser, user } = useAuthContext();
   const [path, setPath] = React.useState('');
   const pathname = usePathname();
   const [isMobile, setIsMobile] = React.useState(false);
@@ -35,8 +33,6 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const isArtist = user?.role === 'ARTIST';
-
   return (
     <div className=" sticky top-0 z-[50] w-full flex gap-x-8 text-lg items-center justify-between p-5 bg-black text-white">
       <div className="">{hasLogo && <Logo />}</div>
@@ -55,51 +51,23 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
         <Link href={'/'} className={path === '/' ? 'border-b-2' : ''}>
           Home
         </Link>
-        <Link href={'/music'} className={path === '/music' ? 'border-b-2' : ''}>
+        <Link href={'/music'} className={path.startsWith('/music') ? 'border-b-2' : ''}>
           Music
         </Link>
-        <Link href={'/bio'} className={path === '/bio' ? 'border-b-2' : ''}>
+        <Link href={'/bio'} className={path.startsWith('/bio') ? 'border-b-2' : ''}>
           Bio
         </Link>
-        <Link href={'/videos'} className={path === '/videos' ? 'border-b-2' : ''}>
+        <Link href={'/videos'} className={path.startsWith('/videos') ? 'border-b-2' : ''}>
           Videos
         </Link>
-        <Link href={'/store'} className={path === '/store' ? 'border-b-2' : ''}>
+        <Link href={'/store'} className={path.startsWith('/store') ? 'border-b-2' : ''}>
           Store
         </Link>
-        {isArtist ? (
-          <Link href={'/admin' as any} className={path === '/admin' ? 'border-b-2' : ''}>
-            Live (Admin)
-          </Link>
-        ) : (
-          <Link href={'/live'} className={path === '/live/join-liv' ? 'border-b-2' : ''}>
-            Live (Join Stream)
-          </Link>
-        )}
+        <Link href={'/live'} className={path.startsWith('/live') ? 'border-b-2' : ''}>
+          Live (Join Stream)
+        </Link>
       </div>
       <div className="flex items-center gap-x-2">
-        {!authenticated && !noLogin && (
-          <button
-            className="bg-white px-6 py-1 rounded-lg text-lg font-semibold text-black"
-            onClick={() => setViewLogin(true)}
-          >
-            Login
-          </button>
-        )}
-
-        {authenticated && !noLogin && (
-          <button
-            className="bg-white px-6 py-1 rounded-lg text-lg font-semibold text-black"
-            onClick={() => {
-              setAuthenticated(false);
-              setUser({});
-              localStorage.removeItem('token');
-              localStorage.removeItem('user');
-            }}
-          >
-            Logout
-          </button>
-        )}
         <button onClick={() => setIsMobile(!isMobile)} className="">
           <FaBars className=" md:hidden" />
         </button>

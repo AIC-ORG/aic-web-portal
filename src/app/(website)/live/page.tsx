@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 const JoinLive = () => {
   const [streamId, setStreamId] = useState('');
   const [streams, setStreams] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const handleJoinStream = async () => {
     if (streamId.trim() === '') return alert('Please enter a valid stream id');
@@ -17,6 +18,7 @@ const JoinLive = () => {
   };
 
   const getStreams = async () => {
+    setLoading(true);
     try {
       const request = await api.get('/stream/get-streams?page=0&limit=5', {
         headers: {
@@ -30,6 +32,8 @@ const JoinLive = () => {
     } catch (error: any) {
       console.log(error);
       toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,14 +43,14 @@ const JoinLive = () => {
 
   return (
     <>
-      <div className="w-full flex flex-col text-white min-h-screen items-center">
+      <div className="w-full flex flex-col px-3 text-white min-h-screen items-center">
         <span className="font-bold text-xl">Join Stream</span>
         <span className=" opacity-70 text-sm">These are the current/live streams</span>
-        <div className="w-3/5 flex flex-col text-black">
+        <div className="sm:w-4/5 w-full md:w-3/5 flex flex-col text-black">
           {streams?.map((stream) => (
             <Link
               href={`/live/${stream.roomId}` as any}
-              className="bg-dark-brownish border-2 border-bg-african text-white my-3 rounded-xl p-3"
+              className="bg-dark-brownish hover:bg-black duration-300 hover:border-gray-300 border-2 border-bg-african text-white my-3 rounded-xl p-3"
               key={stream.id}
             >
               <div className="flex flex-col">
@@ -57,8 +61,10 @@ const JoinLive = () => {
               </div>
             </Link>
           ))}
+          {loading && <span>Loading...</span>}
+          {!loading && streams.length === 0 && <span>No streams found</span>}
         </div>
-        <div className="w-3/5 flex my-3 flex-col items-start justify-center">
+        <div className="sm:w-4/5 w-full md:w-3/5  flex my-3 flex-col items-start justify-center">
           <div className="my-1 w-full flex items-center justify-between">
             <span className={``}>OR Join By Stream ID</span>
           </div>

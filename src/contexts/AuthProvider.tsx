@@ -31,7 +31,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (isAuthPage) return;
     try {
       const tk = getCookie('token');
-      if (!tk) return;
+      if (!tk) {
+        setInit(false);
+        return;
+      }
       const res = await AuthApi.get(`/user/me`);
       console.log(res.data);
       const data = res.data?.data?.user ?? res.data?.data;
@@ -45,7 +48,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const token = getCookie('token');
-    if (!token) return;
+    if (!token) {
+      console.log('no token');
+      setInit(false);
+      return;
+    }
     if (token && typeof token === 'string') {
       setToken(token);
     }

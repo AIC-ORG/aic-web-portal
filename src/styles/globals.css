@@ -48,7 +48,7 @@
 }
 
 .bg-banner {
-  background: url('../../public/banner.png') repeat;
+  background: url('/banner.png') repeat;
 }
 
 /* video */

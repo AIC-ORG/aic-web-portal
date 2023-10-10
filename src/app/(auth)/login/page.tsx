@@ -6,6 +6,7 @@ import Image from 'next/image';
 import React from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 const LoginPage = () => {
   const [data, setData] = React.useState({
@@ -20,6 +21,7 @@ const LoginPage = () => {
   const [loginError, setLoginError] = React.useState('');
   const [success, setSuccess] = React.useState(false);
   const queryParams = useSearchParams();
+  const redirect = queryParams.get('redirect');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -45,7 +47,7 @@ const LoginPage = () => {
         });
         setSuccess(true);
         const user = res.data?.data?.user;
-        const redirectUrl = user?.role === 'ARTIST' ? '/portal' : '/';
+        const redirectUrl = redirect ? redirect : user?.role === 'ARTIST' ? '/portal' : '/';
         window.location.href = redirectUrl;
       }
     } catch (error: any) {
@@ -81,6 +83,9 @@ const LoginPage = () => {
         >
           {loginError && <p className="text-red-500 px-2">{loginError}</p>}
           <div className="flex text-sm flex-col w-full">
+            <label className="px-1" htmlFor="">
+              Email
+            </label>
             <input
               type="email"
               name="email"
@@ -94,6 +99,9 @@ const LoginPage = () => {
             {error.email && <p className="text-red-500 px-2">{error.email}</p>}
           </div>
           <div className="flex text-sm flex-col w-full">
+            <label className="px-1" htmlFor="">
+              Password
+            </label>
             <input
               type="password"
               name="password"
@@ -115,6 +123,12 @@ const LoginPage = () => {
             </p>
           </button>
         </form>
+        <p className=" text-center text-sm gap-x-2 mt-6 flex items-center">
+          Don't have an account?.{' '}
+          <Link className=" font-black" href={'/signup'}>
+            Signup
+          </Link>{' '}
+        </p>
       </div>
     </div>
   );
