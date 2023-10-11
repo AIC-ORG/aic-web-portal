@@ -29,7 +29,7 @@ async function getWebContent() {
 
 const Homepage = async () => {
   const [content] = await getWebContent();
-  console.log('content', content);
+  // console.log('content', content);
   const pics = [
     { image: '/images/pic12.jpg', option: 'MERCH', icon: <FaTshirt />, link: '/store' },
     {

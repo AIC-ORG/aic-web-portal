@@ -20,18 +20,17 @@ const JoinLive = () => {
   const getStreams = async () => {
     setLoading(true);
     try {
-      const request = await api.get('/stream/get-streams?page=0&limit=5', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
-        },
-      });
-      const { data } = request.data;
-
-      setStreams(data.streams);
+      // const request = await api.get('/stream/get-streams?page=0&limit=5', {
+      //   headers: {
+      //     Authorization: `Bearer ${localStorage.getItem('token')}`,
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
+      // const { data } = request.data;
+      // setStreams(data.streams);
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     } finally {
       setLoading(false);
     }
@@ -46,7 +45,7 @@ const JoinLive = () => {
       <div className="w-full flex flex-col px-3 text-white min-h-screen items-center">
         <span className="font-bold text-xl">Join Stream</span>
         <span className=" opacity-70 text-sm">These are the current/live streams</span>
-        <div className="sm:w-4/5 w-full md:w-3/5 flex flex-col text-black">
+        <div className="sm:w-4/5 w-full md:w-3/5 flex items-center flex-col text-white">
           {streams?.map((stream) => (
             <Link
               href={`/live/${stream.roomId}` as any}

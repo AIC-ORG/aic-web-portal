@@ -12,6 +12,12 @@ export default {
       type: 'string',
       validation: (Rule: any) => Rule.required(),
     },
+    {
+      name: 'banner',
+      title: 'Banner',
+      type: 'banner',
+      validation: (Rule: any) => Rule.required(),
+    },
     // bio object
     {
       name: 'bio',

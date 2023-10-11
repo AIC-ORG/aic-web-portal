@@ -4,7 +4,7 @@ import { FaTag as icon } from 'react-icons/fa';
 export default {
   name: 'banner',
   title: 'Banner',
-  type: 'document',
+  type: 'object',
   icon,
   fields: [
     {
@@ -24,17 +24,16 @@ export default {
       type: 'text',
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
       name: 'link',
       title: 'Link',
       type: 'string',
+    },
+    {
+      name: 'date',
+      title: 'Date',
+      type: 'date',
+      validation: (Rule: any) => Rule.required(),
+      default: Date.now(),
     },
   ],
 };
