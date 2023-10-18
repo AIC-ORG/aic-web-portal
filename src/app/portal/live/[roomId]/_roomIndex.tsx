@@ -35,7 +35,7 @@ const LiveRoomIndex: FC<Props> = ({ stream }) => {
     e.preventDefault();
     console.log('sending message');
     console.log(user);
-    socket.emit('message', { room: stream.id, message, sender: user });
+    socket.emit('message', { room: stream.roomId, message, sender: user });
     setMessage('');
   };
 
@@ -45,7 +45,7 @@ const LiveRoomIndex: FC<Props> = ({ stream }) => {
   });
 
   useEffect(() => {
-    fetchMessages(stream.id);
+    fetchMessages(stream.roomId);
 
     //
     const initializeWebcam = async () => {
