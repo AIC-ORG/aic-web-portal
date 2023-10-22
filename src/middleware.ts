@@ -29,6 +29,10 @@ export function middleware(request: NextRequest) {
     if (whitelist.includes(request.nextUrl.pathname)) {
       return NextResponse.redirect(new URL('/', request.url));
     }
+    const isArtist = decoded.role === 'ARTIST';
+    if (request.nextUrl.pathname.startsWith('/portal') && !isArtist) {
+      return NextResponse.redirect(new URL('/notice', request.url));
+    }
     // if (request.nextUrl.pathname === '/') {
     //   console.log('redirecting to portal');
     //   return NextResponse.redirect(new URL('/portal', request.url));

@@ -39,7 +39,7 @@ const Suggested: FC<SuggestedProps> = ({ artistName, otherMusics, activeMusic })
           <span className=" text-white"> No lyrics Found</span>
         )
       ) : (
-        <div className="flex flex-col gap-1">
+        <div className="flex py-3 max-h-[80vh] overflow-y-auto flex-col gap-1">
           {otherMusics.map((music, i) => (
             <Link
               href={`/music/${music._id}`}
@@ -64,6 +64,7 @@ const Suggested: FC<SuggestedProps> = ({ artistName, otherMusics, activeMusic })
               </div>
             </Link>
           ))}
+          {otherMusics.length === 0 && <div>No Other Musics found</div>}
         </div>
       )}
     </div>
