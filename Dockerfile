@@ -37,7 +37,7 @@ EXPOSE 3231
 
 ENV  NODE_ENV=production \
     PORT=3231 \
-    NEXT_PUBLIC_API_URL=https://aic-backend.onrender.com/api/v1 \
+    NEXT_PUBLIC_API_URL=http://194.163.167.131:5800/api/v1 \
     SANITY_SECRET_TOKEN=skWt5s6xRcBlqsjSqn47vc7zC7NYnF0UYmugB1CaF8vniXPjcQdUA94SI5Wp0MlAIru7fCLyJecLYvyIYV67BfmjOU4PStSA9TLx8uu5eOL9tWGPCnugPcpfmTctEjewmHgNEAdMOXj0fYzd21gNCvHyBaFvcNRia3UINDcxu3qTn34mP47i
 
 CMD ["node", "server.js"]
