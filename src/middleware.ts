@@ -5,7 +5,7 @@ import jwtDecode from 'jwt-decode';
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token');
-  let whitelist = ['/login', '/register', '/api/login', '/api/register', '/redirect'];
+  const whitelist = ['/login', '/register', '/api/login', '/api/register', '/redirect'];
 
   // ignore the whitelist if the request is for the portal
   const isPortalUrl = request.nextUrl.pathname.startsWith('/portal');
