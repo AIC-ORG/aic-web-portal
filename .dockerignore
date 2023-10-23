@@ -22,3 +22,11 @@
 **/values.dev.yaml
 LICENSE
 README.md
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+yarn-error.log
+README.md
+.next
+.git
