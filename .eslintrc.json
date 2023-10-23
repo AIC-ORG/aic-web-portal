@@ -1,9 +1,18 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
     "import/no-anonymous-default-export": "off",
     "react/no-unescaped-entities": 0,
     "@next/next/no-img-element": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "prefer-const": "warn",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
     "prettier/prettier": [
       "warn",
       {
@@ -17,6 +26,7 @@
       }
     ]
   },
+  "parser": "@typescript-eslint/parser",
   "overrides": [
     {
       "files": ["src/**/*.ts", "src/**/*.tsx"],
