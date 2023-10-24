@@ -31,12 +31,18 @@ const Homepage = async () => {
   const [content] = await getWebContent();
   // console.log('content', content);
   const pics = [
-    { image: '/images/pic12.jpg', option: 'MERCH', icon: <FaTshirt />, link: '/store' },
+    {
+      image: '/images/pic12.jpg',
+      option: 'MERCH',
+      icon: <FaTshirt />,
+      link: 'https://wayzz.vercel.app/',
+      target: '_blank',
+    },
     {
       image: '/images/pic2.jpg',
       option: 'DISCOGRAPHY',
       icon: <FaCompactDisc />,
-      link: '/albums',
+      link: '/music',
     },
     {
       image: '/images/pic3.jpg',
@@ -48,18 +54,18 @@ const Homepage = async () => {
       image: '/images/pic6.jpg',
       option: 'SHAYO OUT NOW',
       icon: <FaNewspaper />,
-      link: '/news',
+      link: '/video',
     },
     { image: '/images/pic7.jpg', option: 'MUSIC', icon: <FaMusic />, link: '/music' },
     { image: '/images/pic8.jpg', option: 'VIDEOS', icon: <FaVideo />, link: '/videos' },
-    { image: '/images/pic9.jpg', option: 'PHOTOS', icon: <FaCamera />, link: '/photos' },
+    { image: '/images/pic9.jpg', option: 'PHOTOS', icon: <FaCamera />, link: '/music' },
     { image: '/images/pic10.jpg', option: 'BIOGRAPHY', icon: <FaHistory />, link: '/bio' },
     {
       image: '/images/pic13.jpg',
       option: 'LATEST NEWS',
       date: ' 11 September 2023',
       icon: <FaNewspaper />,
-      link: '#',
+      link: '/bio',
     },
   ];
   return (
@@ -90,6 +96,7 @@ const Homepage = async () => {
           {pics.map((pic, i) => (
             <Link
               href={pic.link as any}
+              target={pic.target as any}
               key={i}
               className="flex duration-300 p-0 m-0 border-0 cursor-pointer music-card max-w[400px] relative aspect-square overflow-hidden flex-col items-center justify-center bg-white roundedlg shadow-md"
             >

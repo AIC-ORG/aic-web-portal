@@ -15,8 +15,19 @@ const luckGuy = Luckiest_Guy({
 });
 
 export const metadata: Metadata = {
-  title: 'Ariel Wayz - Admin Portal',
-  description: 'Admin Portal for Ariel Wayz',
+  title: 'Ariel Wayz - Website',
+  description: 'A place to find all things about Ariel Wayz',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IE',
+    url: 'https://arielwayz.com',
+    images: [2, 3, 6, 8].map((i) => ({
+      url: `/images/pic${i}.jpg`,
+      width: 800,
+      height: 600,
+      alt: 'Ariel Wayz',
+    })),
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +42,7 @@ export default function RootLayout({
       <body className={`${inter.className} ${inter.variable} ${luckGuy.variable}`}>
         <Providers>
           {children}
-          {/* {modal} */}
+          {modal}
         </Providers>
       </body>
     </html>

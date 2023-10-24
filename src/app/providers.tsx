@@ -7,7 +7,7 @@ import NProvider from '@/contexts/NProvider';
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthProvider>
-      <NProvider color="#390101">{children}</NProvider>
+      <NProvider color="#6e5b5b">{children}</NProvider>
     </AuthProvider>
   );
 };
