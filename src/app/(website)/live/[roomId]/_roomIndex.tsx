@@ -14,7 +14,6 @@ interface Props {
 }
 
 const LiveRoomIndex: FC<Props> = ({ stream }) => {
-  console.log('stream on client', stream);
   const webcamRef = useRef<HTMLVideoElement | null>(null);
   const remoteVideoRef = useRef<HTMLVideoElement | null>(null);
   const { user } = useAuth();

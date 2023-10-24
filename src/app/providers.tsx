@@ -1,8 +1,7 @@
 'use client';
-import { Next13ProgressBar } from 'next13-progressbar';
-import React from 'react';
 import { AuthProvider } from '@/contexts/AuthProvider';
 import NProvider from '@/contexts/NProvider';
+import React from 'react';
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (

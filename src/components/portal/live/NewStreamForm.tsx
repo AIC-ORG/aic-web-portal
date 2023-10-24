@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { title } from 'process';
 import React, { FC, useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
+import LoadingOverlay from './LoadingOverlay';
 
 interface Props {
   isLive?: boolean;
@@ -22,7 +23,10 @@ const NewStreamForm: FC<Props> = ({ isLive, onClose }) => {
     scheduledAt: '',
   });
   const [loading, setLoading] = useState(false);
+  const [entering, setEntering] = useState(false);
+
   const router = useRouter();
+  console.log('isLive', isLive);
 
   const createStream = async (live?: boolean) => {
     setLoading(true);
@@ -32,8 +36,13 @@ const NewStreamForm: FC<Props> = ({ isLive, onClose }) => {
     try {
       const { data } = await AuthApi.post('/stream/create', formData);
       console.log(data);
-      if (!isLive) onClose();
-      else router.push(`/portal/live/${data.data.stream?.roomId}`);
+      console.log('live', live);
+      if (!live) {
+        onClose();
+      } else {
+        setEntering(true);
+        router.push(`/portal/live/${data.data.stream?.roomId}`);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -55,6 +64,7 @@ const NewStreamForm: FC<Props> = ({ isLive, onClose }) => {
 
   return (
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-y-4">
+      {entering && <LoadingOverlay title="Entering Stream" />}
       <div className=" w-full flex-col flex gap-y-1">
         <p className="text-sm font-semibold">Title</p>
         <input

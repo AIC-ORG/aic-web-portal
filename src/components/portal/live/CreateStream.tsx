@@ -1,5 +1,4 @@
 import Modal from '@/components/core/Modal';
-import { Button, Card } from '@tremor/react';
 import { FC, useState } from 'react';
 import { BiCalendar, BiCameraMovie, BiSolidChevronRight, BiX } from 'react-icons/bi';
 import { BsArrowLeft } from 'react-icons/bs';
@@ -67,9 +66,10 @@ const CreateStream: FC<Props> = ({ onClose, onRefresh }) => {
                   state: true,
                   component: (
                     <NewStreamForm
+                      isLive={false}
                       onClose={() => {
-                        onClose();
                         onRefresh();
+                        onClose();
                       }}
                     />
                   ),
