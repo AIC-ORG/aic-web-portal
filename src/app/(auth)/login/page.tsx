@@ -38,9 +38,15 @@ const LoginPage = () => {
     setLoginError('');
     try {
       const res = await api.post('/auth/login', data);
+      console.log(res);
       if (res.status === 200 || res.status === 201) {
         const token = res.data.token ?? res.data.data.token ?? res.data.data.accessToken;
+        const user_role = res.data.data?.user?.role;
         setCookie('token', token, {
+          maxAge: 60 * 60 * 24,
+          path: '/',
+        });
+        setCookie('role', user_role, {
           maxAge: 60 * 60 * 24,
           path: '/',
         });

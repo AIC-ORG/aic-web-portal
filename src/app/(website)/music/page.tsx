@@ -36,11 +36,11 @@ const MusicIndex = () => {
       ) : (
         <div className="flex flex-col min-h-[90vh] w-full">
           <div className="grid w-full lg:grid-cols-4 md:grid-cols-3 five:grid-cols-2   gap11">
-            {[...musics, ...musics].map((music) => (
+            {musics.map((music) => (
               <Link
                 href={`/music/${music._id}`}
                 key={music._id}
-                className="flex duration-300 p-0 m-0 cursor-pointer music-card max-w[400px] relative aspect-square overflow-hidden flex-col items-center justify-center bg-white roundedlg shadow-md"
+                className="flex music_card duration-300 p-0 m-0 cursor-pointer music-card max-w[400px] relative aspect-square overflow-hidden flex-col items-center justify-center bg-white roundedlg shadow-md"
               >
                 <img
                   className="  absolute top-0 bottom-0 right-0 left-0 min-w-full min-h-full object-cover"

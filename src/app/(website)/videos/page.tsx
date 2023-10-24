@@ -5,7 +5,7 @@ import { IMusic } from '@/types/music.type';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { BsPlay } from 'react-icons/bs';
+import { BsMusicNote, BsPlay, BsPlayBtn } from 'react-icons/bs';
 
 const VideosPage = () => {
   const [musics, setMusics] = useState<IMusic[]>([]);
@@ -36,29 +36,29 @@ const VideosPage = () => {
       ) : (
         <div className="grid text-white w-full lg:grid-cols-4 md:grid-cols-3 five:grid-cols-2   gap11">
           {musics.map((video) => (
-            <div key={video._id} className="wrapper border-[#341717] p-0 m-0">
-              <Image
-                width={400}
-                height={400}
-                objectFit="cover"
-                className="image"
+            <Link
+              href={`/music/${video._id}`}
+              key={video._id}
+              className="flex music_card duration-300 p-0 m-0 cursor-pointer music-card max-w[400px] relative aspect-square overflow-hidden flex-col items-center justify-center bg-white roundedlg shadow-md"
+            >
+              <img
+                className="  absolute top-0 bottom-0 right-0 left-0 min-w-full min-h-full object-cover"
                 src={
-                  video?.thumbnail?.asset.url ??
+                  (video?.thumbnail.asset.url as string) ??
                   `https://i.ytimg.com/vi/${video?.youtubeId}/hqdefault.jpg`
                 }
                 alt=""
               />
-              <Link
-                href={`/music/${video._id}`}
-                className="overlay flex flex-col items-center justify-center"
-              >
-                <p className="text-2xl text-white mt-4 font-bold text-center">{video.title}</p>
-                <span className=" text-white flex items-center gap-x-3">
-                  Play
-                  <BsPlay size={30} />
+              <div className="w-full text-white h-full text-center bg-[#0e0404]/70 items-center justify-center flex flex-col z-10">
+                <button className="text-xl rounded-full w-11 border-2 h-11 items-center justify-center flex font-semibold">
+                  <BsPlayBtn />
+                </button>
+                <span className=" font-roboto-serif">
+                  {new Date(video?.releaseDate).toDateString()}
                 </span>
-              </Link>
-            </div>
+                <p className="text-2xl mt-4 font-bold text-center">{video.title}</p>
+              </div>
+            </Link>
           ))}
         </div>
       )}

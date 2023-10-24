@@ -60,9 +60,16 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
         <Link href={'/videos'} className={path.startsWith('/videos') ? 'border-b-2' : ''}>
           Videos
         </Link>
-        <Link href={'/store'} className={path.startsWith('/store') ? 'border-b-2' : ''}>
+        <a
+          href={
+            'https://wayzz.vercel.app/?utm_source=arielwayz.com&utm_medium=website&utm_campaign=arielwayz.com'
+          }
+          rel="noreferrer noopener"
+          target="_blank"
+          className={path.startsWith('/store') ? 'border-b-2' : ''}
+        >
           Store
-        </Link>
+        </a>
         <Link href={'/live'} className={path.startsWith('/live') ? 'border-b-2' : ''}>
           Live (Join Stream)
         </Link>

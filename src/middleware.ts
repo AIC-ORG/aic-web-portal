@@ -29,7 +29,9 @@ export function middleware(request: NextRequest) {
     if (whitelist.includes(request.nextUrl.pathname)) {
       return NextResponse.redirect(new URL('/', request.url));
     }
-    const isArtist = decoded.role === 'ARTIST';
+    const role = decoded.role ?? request.cookies.get('role')?.value;
+    const isArtist = role === 'ARTIST';
+    console.log(isArtist, decoded);
     if (request.nextUrl.pathname.startsWith('/portal') && !isArtist) {
       return NextResponse.redirect(new URL('/notice', request.url));
     }
