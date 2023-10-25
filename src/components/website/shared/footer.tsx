@@ -1,26 +1,25 @@
 import Image from 'next/image';
-import { BiEnvelopeOpen, BiGlobe } from 'react-icons/bi';
+import { BiEnvelopeOpen, BiGlobe, BiLogoTiktok } from 'react-icons/bi';
 import { BsArrow90DegUp, BsArrowUpRight } from 'react-icons/bs';
-import { FaLinkedin, FaFacebookSquare, FaInstagramSquare } from 'react-icons/fa';
+import { FaLinkedin, FaFacebookSquare, FaInstagramSquare, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center bg-black  text-white relative z-10 overflow-hidden py-2">
       <div className="ltab:flex w-full grid five:grid-cols-2 justify-between xtab:px-20 phone:px-4 px-2 py-10 gap-5">
         <div className="flex text-sm ltab:text-base flex-col five:items-start items-center justify-center">
-          <Image
-            width={130}
-            height={130}
-            className="ltab:w-[130px] w-[100px]"
-            src="/wayzone.png"
-            alt=""
-          />
-          <p className="ltab:mt-4 mt-1 text-center phone:text-start">
-            Need to know more about us? contact us.
+          <p className=" font-luckGuy md:text-4xl text-2xl text-center mx-auto ">ARIEL WAYZ</p>
+          <p className="ltab:mt-4 mt-1 text-center mx-auto 2sm:text-lg  italic 2sm:text-start">
+            Indulge in the sweetness of your favourite music by your favourite artist
           </p>
           <div className="flex items-center tablet:ml-4 mt-4 justify-center">
-            <a className="flex items-center px-2" href="#" target="_blank" rel="noreferrer">
-              <FaLinkedin className="text-xl" />
+            <a
+              className="flex items-center px-2"
+              href="https://www.youtube.com/@ArielWayz"
+              target="_blank"
+              rel="no-referrer noreferrer"
+            >
+              <FaYoutube className="text-xl" />
             </a>
             <a
               className="flex items-center px-2"
@@ -46,26 +45,21 @@ const Footer = () => {
             >
               <BiEnvelopeOpen className="text-xl" />
             </a>
-            <a
-              className="flex items-center px-2"
-              href="#"
-              target="_blank"
-              rel="no-referrer noreferrer"
-            >
-              <BiGlobe className="text-xl" />
+            <a className="flex items-center px-2" href="#" target="_blank" rel="noreferrer">
+              <BiLogoTiktok className="text-xl" />
             </a>
           </div>
         </div>
         <div className="flex text-sm ltab:text-base flex-col five:items-start items-center">
           <h1 className="ltab:text-xl font-semibold">Company</h1>
-          <a className="ltab:mt-4 font-semibold mt-1" href="/portal" target="_blank">
+          <a className="ltab:mt-4 font-semibold mt-1 truncate" href="/portal" target="_blank">
             Go To Portal <BsArrowUpRight className="inline-block" />
           </a>
           <a className="ltab:mt-4 mt-1" href="#">
             Contact
           </a>
           <a className="ltab:mt-4 mt-1" href="#">
-            Blog
+            FAQS
           </a>
           <a className="ltab:mt-4 mt-1" href="#">
             Blog
@@ -80,10 +74,10 @@ const Footer = () => {
             Contact
           </a>
           <a className="ltab:mt-4 mt-1" href="#">
-            Blog
+            Privacy Policy
           </a>
           <a className="ltab:mt-4 mt-1" href="#">
-            Blog
+            Terms & Conditions
           </a>
         </div>
         <div className="flex text-sm ltab:text-base flex-col five:items-start items-center">
@@ -100,6 +94,9 @@ const Footer = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="flex items-center w-full justify-center">
+        <span>&copy; 2023 AfricaInColors. All rights reserved</span>
       </div>
     </div>
   );
