@@ -1,13 +1,6 @@
-import Image from 'next/image';
-import { BiEnvelopeOpen, BiGlobe, BiLogoTiktok } from 'react-icons/bi';
-import { BsArrow90DegUp, BsArrowUpRight } from 'react-icons/bs';
-import {
-  FaLinkedin,
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaYoutube,
-  FaFacebookF,
-} from 'react-icons/fa';
+import { BiEnvelopeOpen, BiLogoTiktok } from 'react-icons/bi';
+import { BsArrowUpRight } from 'react-icons/bs';
+import { FaFacebookF, FaInstagramSquare, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -40,7 +33,7 @@ const Footer = () => {
               target="_blank"
               rel="no-referrer noreferrer"
             >
-              <FaYoutube className="text-xl" />
+              <FaYoutube className="" />
             </a>
             <a
               className="flex items-center w-8 rounded-full aspect-square hover:bg-bg-african duration-300 hover:text-white justify-center bg-white"
@@ -48,7 +41,7 @@ const Footer = () => {
               target="_blank"
               rel="no-referrer noreferrer"
             >
-              <FaFacebookF className="text-xl" />
+              <FaFacebookF className="" />
             </a>
             <a
               className="flex items-center w-8 rounded-full aspect-square hover:bg-bg-african duration-300 hover:text-white justify-center bg-white"
@@ -56,7 +49,7 @@ const Footer = () => {
               target="_blank"
               rel="no-referrer noreferrer"
             >
-              <FaInstagramSquare className="text-xl" />
+              <FaInstagramSquare className="" />
             </a>
             <a
               className="flex items-center w-8 rounded-full aspect-square hover:bg-bg-african duration-300 hover:text-white justify-center bg-white"
@@ -64,7 +57,7 @@ const Footer = () => {
               target="_blank"
               rel="no-referrer noreferrer"
             >
-              <BiEnvelopeOpen className="text-xl" />
+              <BiEnvelopeOpen className="" />
             </a>
             <a
               className="flex items-center w-8 rounded-full aspect-square hover:bg-bg-african duration-300 hover:text-white justify-center bg-white"
@@ -72,13 +65,19 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <BiLogoTiktok className="text-xl" />
+              <BiLogoTiktok className="" />
             </a>
           </div>
         </div>
       </div>
-      <div className="flex items-center w-full justify-center">
+      <div className="flex xtab:px-[10%] phone:px-4 px-2 py-2  text-stone-400 items-center w-full justify-between md:flex-row flex-col">
         <span>&copy; 2023 AfricaInColors. All rights reserved</span>
+        <span>FAQS</span>
+        <span>Privacy Policy</span>
+        {/* <span>Terms & Conditions</span> */}
+        <a className="ltab:mt-4 mt-1" href="/portal" target="_blank">
+          Go To Portal <BsArrowUpRight className="inline-block text-sm" />
+        </a>
       </div>
     </div>
   );

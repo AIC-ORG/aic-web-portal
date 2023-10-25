@@ -9,11 +9,16 @@ export function middleware(request: NextRequest) {
 
   // ignore the whitelist if the request is for the portal
   const isPortalUrl = request.nextUrl.pathname.startsWith('/portal');
-  if ((whitelist.includes(request.nextUrl.pathname) && !token) || !isPortalUrl)
+  const isLiveUrl = request.nextUrl.pathname.startsWith('/live');
+  if ((whitelist.includes(request.nextUrl.pathname) && !token) || (!isPortalUrl && !isLiveUrl))
     return NextResponse.next();
 
   // if the request is for the portal and there is no token, redirect to login
-  if (!token && isPortalUrl) {
+  if (!token && (isPortalUrl || isLiveUrl)) {
+    if (isLiveUrl)
+      return NextResponse.redirect(
+        new URL(`/login?redirect=${request.nextUrl.pathname}`, request.url),
+      );
     return NextResponse.redirect(new URL('/login', request.url));
   } else if (token) {
     const decoded: any = jwtDecode(token.value);

@@ -10,6 +10,7 @@ const SignupPage = () => {
     email: '',
     telephone: '',
     password: '',
+    role: 'USER',
   });
   const [error, setError] = React.useState({
     names: '',

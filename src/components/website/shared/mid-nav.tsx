@@ -1,9 +1,10 @@
 'use client';
+import { deleteCookie, getCookie } from 'cookies-next';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useEffect } from 'react';
 import { BiX } from 'react-icons/bi';
 import { FaBars } from 'react-icons/fa';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 export const Logo = () => (
   <Link href={'/'} className="logo font-luckGuy flex items-center gap-x-2">
@@ -16,6 +17,13 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
   const [path, setPath] = React.useState('');
   const pathname = usePathname();
   const [isMobile, setIsMobile] = React.useState(false);
+
+  const token = getCookie('token');
+
+  const logout = () => {
+    deleteCookie('token');
+    window.location.href = '/';
+  };
 
   React.useEffect(() => {
     setPath(pathname);
@@ -74,11 +82,18 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
           Live (Join Stream)
         </Link>
       </div>
-      <div className="flex items-center gap-x-2">
+      <div className="flex md:hidden items-center gap-x-2">
         <button onClick={() => setIsMobile(!isMobile)} className="">
-          <FaBars className=" md:hidden" />
+          <FaBars />
         </button>
       </div>
+      {token ? (
+        <button onClick={logout} className="hover:bg-bg-african text-white px-3 py-2 rounded-md">
+          Logout
+        </button>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

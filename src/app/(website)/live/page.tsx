@@ -1,6 +1,8 @@
 'use client';
 import MainLayout from '@/layouts/MainLayout';
+import { IStream } from '@/types/stream.type';
 import { api } from '@/utils/fetch';
+import { getCookie } from 'cookies-next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AiOutlineVideoCamera } from 'react-icons/ai';
@@ -8,7 +10,7 @@ import { toast } from 'react-toastify';
 
 const JoinLive = () => {
   const [streamId, setStreamId] = useState('');
-  const [streams, setStreams] = useState<any[]>([]);
+  const [streams, setStreams] = useState<IStream[]>([]);
   const [loading, setLoading] = useState(false);
 
   const handleJoinStream = async () => {
@@ -20,14 +22,14 @@ const JoinLive = () => {
   const getStreams = async () => {
     setLoading(true);
     try {
-      // const request = await api.get('/stream/get-streams?page=0&limit=5', {
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.getItem('token')}`,
-      //     'Content-Type': 'application/json',
-      //   },
-      // });
-      // const { data } = request.data;
-      // setStreams(data.streams);
+      const request = await api.get('/stream/get-streams?page=0&limit=5', {
+        headers: {
+          Authorization: `Bearer ${getCookie('token')}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      const { data } = request.data;
+      setStreams(data.streams);
     } catch (error: any) {
       console.log(error);
       toast.error(error.response?.data?.message);
@@ -49,14 +51,15 @@ const JoinLive = () => {
           {streams?.map((stream) => (
             <Link
               href={`/live/${stream.roomId}` as any}
-              className="bg-dark-brownish hover:bg-black duration-300 hover:border-gray-300 border-2 border-bg-african text-white my-3 rounded-xl p-3"
+              className="bg-dark-brownish w-full hover:bg-black duration-300 hover:border-gray-300 border-2 border-bg-african text-white my-3 rounded-xl p-3"
               key={stream.id}
             >
               <div className="flex flex-col">
                 <span>Name: {stream.title}</span>
                 <span>Created By: {stream.createdBy.names}</span>
-                <span>Room Id: {stream.roomId}</span>
-                <span>Created At: {stream.createdAt}</span>
+                <span>Description: {stream.description}</span>
+                {/* <span>Room Id: {stream.roomId}</span> */}
+                {/* <span>Created At: {new Date(stream.createdAt).toUTCString()}</span> */}
               </div>
             </Link>
           ))}
