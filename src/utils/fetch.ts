@@ -2,7 +2,9 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import { io } from 'socket.io-client';
 
-export const socket = io('http://194.163.167.131:5002', {
+const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL ?? 'http://194.163.167.131:5002';
+
+export const socket = io(socketUrl, {
   transports: ['websocket'],
 });
 
