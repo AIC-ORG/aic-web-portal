@@ -121,6 +121,7 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
+            disabled={loading}
             className="bg-black border-2 border-white hover:border-black truncate stylbtn text-white rounded-[3em] py-3 px-8"
           >
             <p className="z-50 relative">

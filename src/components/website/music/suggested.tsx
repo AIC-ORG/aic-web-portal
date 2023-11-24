@@ -15,9 +15,8 @@ const Suggested: FC<SuggestedProps> = ({ artistName, otherMusics, activeMusic })
 
   const tabs = ['more videos', 'lyrics'];
   return (
-    <div className="min-w-[500px] lg:flex flex-col hidden w-1/3 border border-slate-50/20 rounded-md p-3">
-      {/* <h1 className=" text-lg font-semibold">More from Ariel {artistName ?? 'Ariel Wayz'}</h1> */}
-      <div className="overflow-x-auto bg-dark-brownish md:w-full max-w-screen-sm mx-auto flex justify-between items-center dark:bg-grey-800 rounded-xl">
+    <div className="md:min-w-[500px] flex h-fit overflow-y-auto flex-col  lg:w-1/3 border border-slate-50/20 rounded-md p-3">
+      <div className="bg-dark-brownish w-full md:max-w-screen-sm md:mx-auto flex justify-between items-center dark:bg-grey-800 rounded-xl">
         {tabs.map((c: string = '', i: number) => (
           <span
             key={i}
@@ -34,12 +33,14 @@ const Suggested: FC<SuggestedProps> = ({ artistName, otherMusics, activeMusic })
       </div>
       {activeTab === 'lyrics' ? (
         activeMusic?.lyrics ? (
-          <LyricsBlock lyrics={activeMusic?.lyrics} />
+          <div className="flex py-3 max-h-[60vh] overflow-y-auto flex-col gap-1">
+            <LyricsBlock lyrics={activeMusic?.lyrics} />
+          </div>
         ) : (
           <span className=" text-white"> No lyrics Found</span>
         )
       ) : (
-        <div className="flex py-3 max-h-[80vh] overflow-y-auto flex-col gap-1">
+        <div className="flex py-3 max-h-[60vh] overflow-y-auto flex-col gap-1">
           {otherMusics.map((music, i) => (
             <Link
               href={`/music/${music._id}`}

@@ -2,6 +2,7 @@ import React, { useState, useRef, Fragment } from 'react';
 import { BiDotsVerticalRounded, BiEdit, BiTrash } from 'react-icons/bi';
 import { Menu, Transition } from '@headlessui/react';
 import Link from 'next/link';
+import { FaViadeo, FaVideo } from 'react-icons/fa';
 
 interface DropdownMenuProps {
   index?: number;
@@ -55,6 +56,20 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ index = 1, id }) => {
       >
         <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
+            <Menu.Item>
+              {({ active }) => (
+                <Link
+                  href={`/music/${id}`}
+                  target="_blank"
+                  className={`${
+                    active ? 'bg-black text-white' : 'text-gray-900'
+                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                >
+                  <FaVideo className="mr-2 h-5 w-5" aria-hidden="true" />
+                  View
+                </Link>
+              )}
+            </Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <Link
