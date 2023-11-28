@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { FC, useState } from 'react';
 import { BsFillQuestionCircleFill } from 'react-icons/bs';
 import ProductCheckoutCard from '@/components/store/ProductCheckoutCard';
@@ -15,7 +15,7 @@ interface CheckoutPageProps {}
 const CheckoutPage: FC<CheckoutPageProps> = () => {
   const [selectedCountry, setSelectedCountry] = useState<number>(0);
   const [selectedCity, setSelectedCity] = useState<number>(0);
-  const {cartItems} = useData()
+  const { cartItems } = useData();
   const handleCityChange = (index: number) => {
     setSelectedCity(index);
   };

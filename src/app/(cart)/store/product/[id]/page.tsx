@@ -29,7 +29,6 @@ const Product: FC<ProductProps> = ({ params: { id } }) => {
     return 0;
   }, [cartItem, preferences]);
 
-  
   const [inCart, setInCart] = useState<boolean>(
     cartItems?.some((e) => e?.id === product?.id) ?? false,
   );
