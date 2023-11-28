@@ -69,7 +69,7 @@ const CheckoutPage: FC<CheckoutPageProps> = () => {
           </div>
           <fieldset className="border-2 border-stone-400 p-5 rounded-md">
             <legend className="text-center px-10">Express checkout</legend>
-            <img src={'/images/paypal.png'} alt="paypal button" />
+            <img src={'/images/paypal.png'} alt="paypal button" className='w-full' />
           </fieldset>
           <div className="w-full flex my-10 items-center">
             <span className="border-b-2 border-b-slate-300 w-full"></span>
@@ -118,7 +118,7 @@ const CheckoutPage: FC<CheckoutPageProps> = () => {
       </div>
       <div className="md:w-[40%] pt-20 px-10 bg-stone-200">
         <div className="w-full gap-6 grid grid-cols-2 sm:grid-cols-3 md:flex flex-col">
-          {cartItems.map(() => (
+          {cartItems.map((_, i) => (
             <ProductCheckoutCard key={i} />
           ))}
         </div>

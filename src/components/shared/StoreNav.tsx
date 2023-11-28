@@ -50,7 +50,7 @@ const StoreNav: FC<NavbarProps> = () => {
           Login
         </Link>
         <Link
-          href={'/login'}
+          href={'/signup'}
           className={cn(
             buttonVariants({ variant: 'outline' }),
             ' text-xs sm:text-sm py-1 px-3 sm:py-2 sm:px-6',
