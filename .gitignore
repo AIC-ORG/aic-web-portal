@@ -23,6 +23,29 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+import numpy as np
+import matplotlib.pyplot as plt
+
+def plot_inclined_trajectory(theta, v, h, length):
+    g = 9.81
+    x = np.arange(0, length, h)
+    y = np.tan(np.radians(theta)) * x - (g/2) * x**2 / (v**2 * np.cos(np.radians(theta))**2)
+    
+    plt.plot(x, y)
+    plt.title('Projectile Trajectory')
+    plt.xlabel('Horizontal Distance (m)')
+    plt.ylabel('Vertical Distance (m)')
+    plt.grid(True)
+    plt.show()
+
+if __name__ == "__main__":
+    N = 100
+    launch_angle = 50
+    initial_velocity = 200
+    step_size = 1
+    total_length = 4019
+    
+    plot_inclined_trajectory(launch_angle, initial_velocity, step_size, total_length)
 
 # local env files
 .env*.local

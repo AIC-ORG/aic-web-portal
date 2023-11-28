@@ -123,3 +123,35 @@ h2 {
   transform: scale(1.1);
   transition: transform 0.5s ease;
 }
+
+
+
+
+/* cart styles */
+
+@layer components{
+    .checkoutInput{
+        @apply w-full outline-none border-2 my-3 rounded-md p-2 border-stone-200 focus:border-stone-400
+    }
+}
+
+:root {
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.alsoLIke::-webkit-scrollbar {
+    height: 0.4rem;
+    background: transparent;
+}
+.alsoLIke::-webkit-scrollbar-thumb{
+    background: #4f4d4d;
+    border-radius: 5px;
+}
