@@ -20,7 +20,7 @@ const CartPage: FC<CartPageProps> = () => {
     return amount;
   }, [cartItems]);
 
-  const removeItemFromCard = (id: String) => {
+  const removeItemFromCard = (id: string) => {
     dispatchCartItems({ type: 'removeItem', payload: id as string });
     cartItems.filter((e) => !(e.id == id));
     toast({
