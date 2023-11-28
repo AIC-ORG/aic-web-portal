@@ -70,7 +70,7 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
         </Link>
         <a
           href={
-            'https://wayzz.vercel.app/?utm_source=arielwayz.com&utm_medium=website&utm_campaign=arielwayz.com'
+            '/store'
           }
           rel="noreferrer noopener"
           target="_blank"
