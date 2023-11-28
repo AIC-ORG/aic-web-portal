@@ -20,7 +20,7 @@ const layout: FC<layoutProps> = ({ children }) => {
             <StoreNav />
             {children}
             {/* <StoreFooter /> */}
-            <Footer/>
+            <Footer />
           </DataProvider>
         </Providers>
         <Toaster position="bottom-right" />

@@ -69,7 +69,7 @@ const CheckoutPage: FC<CheckoutPageProps> = () => {
           </div>
           <fieldset className="border-2 border-stone-400 p-5 rounded-md">
             <legend className="text-center px-10">Express checkout</legend>
-            <img src={'/images/paypal.png'} alt="paypal button" className='w-full' />
+            <img src={'/images/paypal.png'} alt="paypal button" className="w-full" />
           </fieldset>
           <div className="w-full flex my-10 items-center">
             <span className="border-b-2 border-b-slate-300 w-full"></span>
