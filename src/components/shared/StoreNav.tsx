@@ -14,7 +14,7 @@ const StoreNav: FC<NavbarProps> = () => {
   const [active, setActive] = useState<number>(0);
   return (
     <div className="w-full px-4 py-6 md:py-6 md:px-6 md:pl-20 md:pr-10 bg-black flex flex-row border border-black items-center justify-between">
-      <Link href={'/'} className="text-white text-lg sm:text-2xl md:text-4xl whitespace-nowrap">
+      <Link href={'/'} className="text-white text-lg sm:text-2xl md:text-4xl whitespace-nowrap font-luckGuy">
         ARIEL WAYZ
       </Link>
 

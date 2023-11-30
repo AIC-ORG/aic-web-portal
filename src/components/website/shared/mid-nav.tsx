@@ -69,9 +69,7 @@ const MidNav = ({ hasLogo = false, noLogin = true }) => {
           Videos
         </Link>
         <a
-          href={
-            '/store'
-          }
+          href={'/store'}
           rel="noreferrer noopener"
           target="_blank"
           className={path.startsWith('/store') ? 'border-b-2' : ''}
